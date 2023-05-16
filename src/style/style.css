@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Paytone+One&display=swap');
+
+body{
+    margin: 0;
+    background-color: #360429;
+}
+nav{
+    background-color: #360429;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoDiv img{
+    width: 80%;
+}
+
+.link{
+   width : 60%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+.link a{
+    text-decoration: none;
+    font-size: 28px;
+    font-family: 'Monoton', cursive;
+    color: white;
+}
+
+.frontDisplay h1{
+    color: white;
+    font-family: 'Paytone One', sans-serif;
+    margin-left: 5%;
+}
+.movieContainer{
+    display: flex;
+    justify-content: center;
+    background-color: #360429;
+}
+.movieGallery {
+    width: 90%;
+	padding: 1rem;
+	display: grid;
+	grid-template-columns: repeat(9, 30vw);
+	grid-template-rows: 1fr;
+	grid-column-gap: 0.8rem;
+	grid-row-gap: 1rem;
+	overflow: auto;
+	scroll-padding: 1rem;
+    scroll-snap-stop: normal;
+}
+.movieGallery img{
+    width: 95%;
+    height: 600px;
+}
+.tvshowContainer{
+    display: flex;
+    justify-content: center;
+    background-color: #360429;
+}
+.tvshowGallery {
+    width: 90%;
+	padding: 1rem;
+	display: grid;
+	grid-template-columns: repeat(9, 30vw);
+	grid-template-rows: 1fr;
+	grid-column-gap: 0.8rem;
+	grid-row-gap: 1rem;
+    overflow: auto;
+    scroll-snap-stop: normal;
+}
+.tvshowGallery img{
+    width: 95%;
+    height: 600px;
+}
+.active {
+	scroll-snap-type: unset;
+}
+
+li {
+	scroll-snap-align: center;
+	display: inline-block;
+	border-radius: 3px;
+	font-size: 0;
+}
+
+@media screen and (max-width: 700px){
+
+    .movieGallery {
+        width: 100%;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: repeat(1, 200px);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0.8rem;
+        grid-row-gap: 1rem;
+        justify-content: center;
+    }
+    .movieGallery img{
+        width: 100%;
+    }
+
+    .tvshowGallery {
+        width: 100%;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: repeat(1, 200px);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0.8rem;
+        grid-row-gap: 1rem;
+        justify-content: center;
+    }
+    .tvshowGallery img{
+        width: 100%;
+    }
+}

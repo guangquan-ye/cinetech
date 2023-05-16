@@ -1,33 +1,50 @@
 <?php
-			require_once 'vendor/autoload.php';
-			$router = new AltoRouter();
+
+require_once 'vendor/autoload.php';
+
+use App\Controller\MovieController;
+use App\Controller\TvshowController;
+
+$router = new AltoRouter();
+
+// (Il faut redémarrer vscode si il ne reconnait pas AltoRouter)
+$router->setBasePath('/cinetech');
+
+$router->map('GET', '/', function () {
+    require_once "home.php";
+}, 'home');
+
+$router->map('GET', '/movie', function () {
+
+    $movie = new MovieController();
+    $movie->getMovie();
+
+}, 'movie');
+
+$router->map('GET', '/tvshow', function(){
+
+    $tvshow = new TvshowController();
+    $tvshow->getTvshow();
+
+},'tvshow');
+
+$router->map('GET', '/movie/[i:id]', function($id){
+    $movie = new MovieController();
+    $movie->movieInfo($id);
+}, 'movieInfo');
+
+// match current request url
+$match = $router->match();
+
+// call closure or throw 404 status
+if (is_array($match) && is_callable($match['target'])) {
+    call_user_func_array($match['target'], $match['params']);
+} else {
+    // no route was matched
+    header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<?php
-			 require_once 'vendor/autoload.php';
-			 $router = new AltoRouter();
-				 // (Il faut redémarrer vscode si il ne reconnait pas AltoRouter)
-			 $router->setBasePath('/cinetech');
-			    $router->map('GET', '/', function () {
-			    echo "OK";
-			  }, 'home');
-			 // match current request url
-			  $match = $router->match();
-			// call closure or throw 404 status
-			  if( is_array($match) && is_callable( $match['target'] ) ) {
-			  	call_user_func_array( $match['target'], $match['params'] ); 
-			  } else {
-			  	// no route was matched
-			  	header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
-			  }
-?>
+
 </body>
+
 </html>
