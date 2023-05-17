@@ -77,9 +77,9 @@ async function relatedMovie(id){
         for (let related of results){
          
             relatedMovieDiv.innerHTML+=`
-            <div class="relatedGrid">
+            
             <img src="https://image.tmdb.org/t/p/w500/${related.poster_path}" alt="${related.original_title} Poster">
-            </div>
+            
             `;
         }
         

@@ -121,24 +121,46 @@ li {
 span.infoName{
     color: #B3DEC1;
 }
+
 .relatedMovieDiv{
-    display: flex;
-    flex-direction: row;
-    
-}
-.relatedGrid{
-    width: 90%;
+    margin-left: auto;
+    width: 95%;
 	padding: 1rem;
 	display: grid;
 	grid-template-columns: repeat(5, auto);
-    justify-content: center;
+    justify-self: center;
+    
 }
-.relatedGrid img{
-    height: 40%;
+.relatedMovieDiv img{
+    width: 90%;
 }
 
 
 @media screen and (max-width: 700px){
+    nav{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: sticky;
+    }
+    .logoDiv{
+        width: 100%;
+    }
+    .logoDiv img{
+        width: 100%;
+    }
+    .link{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+    }
+    .link a{
+        text-decoration: none;
+        font-size: 16px;
+        font-family: 'Monoton', cursive;
+        color: white;
+    }
     body{
         margin: 5%;
     }
@@ -193,16 +215,12 @@ span.infoName{
     }
     .rightPart{
         width: 90%;
-        font-size: 22px;
+        font-size: 24px;
         display: flex;
         flex-direction: column;
     }
+   
     .relatedMovieDiv{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .relatedGrid{
         width: 90%;
         padding: 1rem;
         display: grid;
@@ -212,8 +230,107 @@ span.infoName{
         grid-column-gap: 1rem;
         height: 50%;
     }
-    .relatedGrid img{
+    .relatedMovieDiv img{
         width: 100%;
-        height: 100%;
+        
+    }
+}
+@media screen and (max-width: 1200px) and (min-width: 700px){
+
+    nav{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: sticky;
+    }
+    .logoDiv{
+        width: 100%;
+    }
+    .logoDiv img{
+        width: 100%;
+    }
+    .link{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+    }
+    .link a{
+        text-decoration: none;
+        font-size: 30px;
+        font-family: 'Monoton', cursive;
+        color: white;
+    }
+    body{
+        margin: 5%;
+    }
+    .movieGallery {
+        width: 100%;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: repeat(0, 300px);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0.8rem;
+        grid-row-gap: 1rem;
+    }
+    .movieGallery img{
+        width: 100%;
+    }
+
+    .tvshowGallery {
+        width: 100%;
+        display: grid;
+        padding: 1rem;
+	    grid-template-columns: repeat(0, 300px);
+	    grid-template-rows: 1fr;
+	    grid-column-gap: 0.8rem;
+	    grid-row-gap: 1rem;
+    }
+    .tvshowGallery img{
+        width: 100%;
+    }
+    .movieInfoDisplay{
+        display: flex;
+        justify-content: center;
+    }
+    .movieDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    .movieDiv img{
+        width: 100%;
+    }
+    .movieInfo{
+        width: 100%;
+    }
+    .leftPart{
+        width: 100%;
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .leftPart img{
+        width: 90%;
+    }
+    .rightPart{
+        width: 90%;
+        font-size: 24px;
+        display: flex;
+        flex-direction: column;
+    }
+    .relatedMovieDiv{
+
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 280px 280px 280px;
+        grid-template-rows: repeat(5, 420px);
+        grid-column-gap: 50px;
+        grid-row-gap: 50px;
+
+    }
+    
+    .relatedMovieDiv img{
+        width: 100%;
+       
     }
 }
