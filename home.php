@@ -11,9 +11,8 @@
 
 <body>
     <nav>
-
         <div class="logoDiv">
-            <img src="Videoclub.png">
+            <img src="./Videoclub.png">
         </div>
         <div class="link">
             <a href="./movie">Movie</a>
@@ -24,7 +23,7 @@
     <div class="frontDisplay">
         <h1>Movie Trend</h1>
         <div class="movieContainer">
-                <div class="movieGallery" id="movieDisplayDiv"></div>
+            <div class="movieGallery" id="movieDisplayDiv"></div>
         </div>
         <h1>TvShow Trend</h1>
         <div class="tvshowContainer">
@@ -35,7 +34,7 @@
     <script src="./src/script/movie.js"></script>
     <script src="./src/script/tvshow.js"></script>
 
-    
+
 </body>
 
 </html>

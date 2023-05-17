@@ -83,6 +83,41 @@ li {
 	border-radius: 3px;
 	font-size: 0;
 }
+.movieInfoDisplay{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.movieInfoDisplay h1{
+    font-size: 50px;
+    margin-left: 10%;
+    margin-top: -4%;
+    
+}
+.movieDiv{
+    display: flex;
+    flex-direction: row;
+    
+}
+.leftPart{
+    width: 40%;
+    display: flex;
+    margin-left: 10%;
+    justify-content: center;
+}
+.leftPart img{
+    height: 80%;
+}
+.rightPart{
+    width: 60%;
+    margin-top: -5%;
+    margin-right: 10%;
+    font-size: 30px;
+    padding: 3%;
+}
+span.infoName{
+    color: aquamarine;
+}
 
 @media screen and (max-width: 700px){
 

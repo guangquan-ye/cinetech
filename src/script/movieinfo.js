@@ -17,20 +17,44 @@ async function movieInfo(){
       try {
         let response = await fetch("https://api.themoviedb.org/3/movie/"+movieId, options);
         let movie = await response.json();
-        console.log(movie)
+        console.log(movie.production_companies)
 
         let movieInfoDisplay = document.getElementById("movieInfoDisplay");
 
+        let genres = [];
+        for (let i = 0; i < movie.genres.length; i++) {
+            genres.push(movie.genres[i].name);
+        }
+        let genresString = genres.join(' ');
+          
+        let companies = [];
+
+        for (let i = 0; i < movie.production_companies.length; i++) {
+            companies.push(movie.production_companies[i].name);
+            
+            console.log(companies);
+        }
+        let companiesString = companies.join(' ');
+
         movieInfoDisplay.innerHTML += `
-            <div class="movieDiv">
             <h1>${movie.original_title}</h1>
-            <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.original_title} Poster">
+            <div class="movieDiv">
+                <div class="leftPart">
+                    <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.original_title} Poster">   
+                </div>
+                <div class="rightPart">
+                    <p><span class="infoName">Synopsis</span> : ${movie.overview}</p>
+                    <p><span class="infoName">Release</span> : ${movie.release_date}</p>
+                    <p><span class="infoName">Genre(s)</span> : ${genresString}<p>
+                    <p><span class="infoName">Popularity</span> : ${movie.popularity}</p>
+                    <p><span class="infoName">Average Vote</span> : ${movie.vote_average}</p>
+                    <p><span class="infoName">Production</span> : ${companiesString}</p>
+                </div>
             </div>`;
     }
     catch (error) {
     console.error("Une erreur s'est produite lors de la récupération du film:", error);
     }
 }
-
 
 movieInfo();
