@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav>
+    <!-- <nav>
         <div class="logoDiv">
             <img src="../Videoclub.png">
         </div>
@@ -20,10 +20,12 @@
             <a href="./tvshow">TvShow</a>
             <input type="text">
         </div>
-    </nav>
-    <p>Hello</p>
+    </nav> -->
+    <div class="movieInfo">
     <div class="movieInfoDisplay" id="movieInfoDisplay"></div>
-
+    <h1>Related Movie</h1>
+    <div class="relatedMovieDiv" id="relatedMovieDiv"></div>
+    </div>
     <script src="../src/script/movieinfo.js"></script>
 </body>
 
