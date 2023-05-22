@@ -33,6 +33,11 @@ $router->map('GET', '/movie/[i:id]', function($id){
     $movie->movieInfo($id);
 }, 'movieInfo');
 
+$router->map('GET', '/tvshow/[i:id]', function($id){
+    $tvshow = new TvshowController();
+    $tvshow->tvshowInfo($id);
+}, 'tvshowinfo');
+
 // match current request url
 $match = $router->match();
 

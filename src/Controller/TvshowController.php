@@ -8,5 +8,10 @@ Class TvshowController{
     {
         require_once "./src/View/tvshow.php";
     }
+
+    public function tvshowInfo($id)
+    {
+        require_once "./src/View/tvshowinfo.php";
+    }
 }
 ?>

@@ -25,7 +25,7 @@ async function movieInfo(){
         for (let i = 0; i < movie.genres.length; i++) {
             genres.push(movie.genres[i].name);
         }
-        let genresString = genres.join(' ');
+        let genresString = genres.join(', ');
           
         let companies = [];
 
@@ -33,11 +33,11 @@ async function movieInfo(){
             companies.push(movie.production_companies[i].name);
             
         }
-        let companiesString = companies.join(' ');
+        let companiesString = companies.join(', ');
 
         movieInfoDisplay.innerHTML += `
             <h1>${movie.original_title}</h1>
-            <div class="movieDiv">
+            <div class="infoDiv">
                 <div class="leftPart">
                     <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.original_title} Poster">   
                 </div>
@@ -54,7 +54,7 @@ async function movieInfo(){
             relatedMovie(genreId)
     }
     catch (error) {
-    console.error("Une erreur s'est produite lors de la récupération du film:", error);
+    console.error("An error occurred while retrieving the movie.", error);
     }
     
 }
@@ -77,16 +77,14 @@ async function relatedMovie(id){
         for (let related of results){
          
             relatedMovieDiv.innerHTML+=`
-            
             <img src="https://image.tmdb.org/t/p/w500/${related.poster_path}" alt="${related.original_title} Poster">
-            
             `;
         }
         
 
     }
     catch (error) {
-        console.error("Une erreur s'est produite lors de la récupération du film:", error);
+        console.error("An error occurred while retrieving the movie.", error);
     };
 }
 movieInfo();

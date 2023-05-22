@@ -10,16 +10,7 @@
 </head>
 
 <body>
-    <nav>
-        <div class="logoDiv">
-            <img src="./Videoclub.png">
-        </div>
-        <div class="link">
-            <a href="./movie">Movie</a>
-            <a href="./tvshow">TvShow</a>
-            <input type="text">
-        </div>
-    </nav>
+    <?php require_once "./src/includes/header.php" ?>
     <div class="frontDisplay">
         <h1>Movie Trend</h1>
         <div class="movieContainer">
@@ -31,8 +22,8 @@
         </div>
     </div>
 
-    <script src="./src/script/movie.js"></script>
-    <script src="./src/script/tvshow.js"></script>
+    <script src="./src/script/indexmovie.js"></script>
+    <script src="./src/script/indextvshow.js"></script>
 
 
 </body>
