@@ -17,7 +17,9 @@
     <h1>Related Movie</h1>
     <div class="relatedDiv" id="relatedMovieDiv"></div>
     </div>
+    
     <script src="../src/script/movieinfo.js"></script>
+    <script src="../src/script/search.js"></script>
 </body>
 
 </html>

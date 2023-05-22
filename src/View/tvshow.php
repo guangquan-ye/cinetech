@@ -11,11 +11,12 @@
 <?php require_once "./src/includes/header.php" ?>
 
 <div class="movieMain">
-        <h1>Movie</h1>
+        <h1>Tv Show</h1>
         <div class="checkboxDiv" id="checkboxDiv"></div>
         <div class="tvshowDisplay" id="tvshowDisplay"></div>
     </div>
 
 <script src="./src/script/tvshow.js"></script>
+<script src="./src/script/search.js"></script>
 </body>
 </html>

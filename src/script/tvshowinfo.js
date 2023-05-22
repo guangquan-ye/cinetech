@@ -78,7 +78,7 @@ async function relatedTvshow(id){
         for (let related of results){
          
             relatedTvshowDiv.innerHTML+=`
-            <img src="https://image.tmdb.org/t/p/w500/${related.poster_path}" alt="${related.original_name} Poster">
+            <a href ="/cinetech/tvshow/${related.id}"><img src="https://image.tmdb.org/t/p/w500/${related.poster_path}" alt="${related.original_name} Poster"></a>
             `;
         }
         

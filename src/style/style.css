@@ -27,18 +27,45 @@ nav{
     color: white;
 }
 
+  
+  
+  #searchResults{
+    position: absolute;
+    max-width: 300px;
+  }
+
+  #searchResults ul {
+    list-style-type: none;
+    padding: 2%;
+    background-color: #00000041;
+  }
+  
+  #searchResults li {
+    margin-bottom: 10px;
+  }
+  
+  #searchResults a {
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    font-family: 'Paytone One', sans-serif;
+  }
+  
+  #searchResults a:hover {
+    text-decoration: underline;
+  }
 /* -------------------------HOME-------------------------- */
 .frontDisplay h1{
     color: white;
     font-family: 'Paytone One', sans-serif;
     margin-left: 5%;
 }
-.movieContainer{
+.movieContainer, .tvshowContainer{
     display: flex;
     justify-content: center;
     background-color: #360429;
 }
-.movieGallery {
+.movieGallery , .tvshowGallery{
     width: 90%;
 	padding: 1rem;
 	display: grid;
@@ -50,41 +77,15 @@ nav{
 	scroll-padding: 1rem;
     scroll-snap-stop: normal;
 }
-.movieGallery img{
+.movieGallery img, .tvshowGallery img{
     width: 95%;
     
 }
-.tvshowContainer{
-    display: flex;
-    justify-content: center;
-    background-color: #360429;
-}
-.tvshowGallery {
-    width: 90%;
-	padding: 1rem;
-	display: grid;
-	grid-template-columns: repeat(9, 30vw);
-	grid-template-rows: 1fr;
-	grid-column-gap: 0.8rem;
-	grid-row-gap: 1rem;
-    overflow: auto;
-    scroll-padding: 1rem;
-    scroll-snap-stop: normal;
-}
-.tvshowGallery img{
-    width: 95%;
-    
-}
+
 .active {
 	scroll-snap-type: unset;
 }
 
-/* li {
-	scroll-snap-align: center;
-	display: inline-block;
-	border-radius: 3px;
-	font-size: 0;
-} */
 
 /* --------------------------MOVIE INFO------------------------- */
 .info h1{
@@ -141,9 +142,13 @@ span.infoName{
     color: white;
     display: grid;
     grid-template-columns: repeat(6, auto);
-    font-size: 20px;
+    font-size: 18px;
     justify-content: center;
-    column-gap: 9%;
+    column-gap: 8%;
+    padding: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: rgba(169, 99, 255) 0px 0px 0px 3px;
 }
 /* ------------------------MOVIE DISPLAY------------------------------- */
 .movieDisplay, .tvshowDisplay{
@@ -151,12 +156,17 @@ span.infoName{
     margin: 5%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
-    gap: 10px;
+    gap: 15px;
 }
-
+.movieMain h1{
+    color: white;
+    font-family: 'Paytone One', sans-serif;
+    margin-left: 5%;
+}
 .moviephpDiv img, .tvshowDiv img{
     width: 100%;
 }
+
 /* -----------------------MEDIA QUERY----------------------------- */
 @media screen and (max-width: 700px){
     nav{

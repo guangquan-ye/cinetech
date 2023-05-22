@@ -77,7 +77,7 @@ async function relatedMovie(id){
         for (let related of results){
          
             relatedMovieDiv.innerHTML+=`
-            <img src="https://image.tmdb.org/t/p/w500/${related.poster_path}" alt="${related.original_title} Poster">
+            <a href ="/cinetech/movie/${related.id}"><img src="https://image.tmdb.org/t/p/w500/${related.poster_path}" alt="${related.original_title} Poster"></a>
             `;
         }
         

@@ -17,5 +17,6 @@
     </div>
     
     <script src="../src/script/tvshowinfo.js"></script>
+    <script src="../src/script/search.js"></script>
 </body>
 </html>

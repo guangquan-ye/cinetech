@@ -5,6 +5,10 @@
         <div class="link">
             <a href="/cinetech/movie">Movie</a>
             <a href="/cinetech/tvshow">TvShow</a>
-            <input type="text">
+            <div class="searchbar">
+                <input type="text" id="search">
+                <div id="searchResults"></div>
+            </div>
         </div>
     </nav>
+    

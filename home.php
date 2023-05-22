@@ -24,6 +24,7 @@
 
     <script src="./src/script/indexmovie.js"></script>
     <script src="./src/script/indextvshow.js"></script>
+    <script src="./src/script/search.js"></script>
 
 
 </body>

@@ -16,8 +16,9 @@
         <div class="checkboxDiv" id="checkboxDiv"></div>
         <div class="movieDisplay" id="movieDisplay"></div>
     </div>
-
+    
 </main>
     <script src="./src/script/movie.js"></script>
+    <script src="./src/script/search.js"></script>
 </body>
 </html>
