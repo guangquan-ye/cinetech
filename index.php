@@ -4,6 +4,9 @@ require_once 'vendor/autoload.php';
 
 use App\Controller\MovieController;
 use App\Controller\TvshowController;
+use App\Controller\UserController;
+
+session_start();
 
 $router = new AltoRouter();
 
@@ -21,7 +24,7 @@ $router->map('GET', '/movie', function () {
 
 }, 'movie');
 
-$router->map('GET', '/tvshow', function(){
+$router->map('GET', '/tv', function(){
 
     $tvshow = new TvshowController();
     $tvshow->getTvshow();
@@ -33,10 +36,34 @@ $router->map('GET', '/movie/[i:id]', function($id){
     $movie->movieInfo($id);
 }, 'movieInfo');
 
-$router->map('GET', '/tvshow/[i:id]', function($id){
+$router->map('GET', '/tv/[i:id]', function($id){
     $tvshow = new TvshowController();
     $tvshow->tvshowInfo($id);
 }, 'tvshowinfo');
+
+$router->map('GET', '/register', function(){
+    $user = new UserController();
+    $user->regFormDisplay();
+}, 'regFormDisplay');
+
+$router->map('POST', '/register', function(){
+    if(isset($_POST["regBtn"])){
+        $user = new UserController();
+        $user->createUsers($_POST["regLogin"], $_POST["regPwd"], $_POST["regPwdConf"]);
+    }
+}, 'usersregister');
+
+$router->map('GET', '/login', function(){
+    $user = new UserController();
+    $user->logFormDisplay();
+}, 'logFormDisplay');
+
+$router->map('POST', '/login' , function(){
+    if(isset($_POST["logBtn"])){
+    $user = new UserController();
+    $user->connect($_POST["logLogin"], $_POST["logPwd"]);
+    }
+}, 'userslogin');
 
 // match current request url
 $match = $router->match();

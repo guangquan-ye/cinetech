@@ -11,15 +11,21 @@
 </head>
 
 <body>
-<?php require_once "./src/includes/header.php" ?>
+    <?php require_once "./src/includes/header.php" ?>
     <div class="info">
     <div class="infoDisplay" id="movieInfoDisplay"></div>
+    <div class="castPart"></div>
+    
     <h1>Related Movie</h1>
     <div class="relatedDiv" id="relatedMovieDiv"></div>
-    </div>
     
+    </div>
+    <div class="commentDisplay" id="commentDisplay"></div>
+
     <script src="../src/script/movieinfo.js"></script>
     <script src="../src/script/search.js"></script>
+    <script src="../src/script/comment.js"></script>
+
 </body>
 
 </html>

@@ -33,7 +33,7 @@ function search() {
     searchResults.innerHTML = '';
     if (searchValue.length > 2) {
       try {
-        let response = await fetch("https://api.themoviedb.org/3/search/movie?language=fr-FR&query=" + searchValue, options);
+        let response = await fetch("https://api.themoviedb.org/3/search/multi?language=fr-FR&query=" + searchValue, options);
         let movies = await response.json();
         displayResults(movies.results);
       } catch (error) {

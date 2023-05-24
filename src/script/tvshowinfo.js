@@ -13,9 +13,43 @@ async function tvshowInfo(){
       };
     
       try {
-        let response = await fetch("https://api.themoviedb.org/3/tv/"+tvshowId, options);
+        let response = await fetch("https://api.themoviedb.org/3/tv/"+tvshowId+"?append_to_response=credits", options);
         let tvshow = await response.json();
-        
+        console.log(tvshow.credits);
+
+        let casting = [];
+        let limit = 6;
+        let count = 0;
+    
+        for (let actor of tvshow.credits.cast) {
+          casting.push(actor);
+          count++;
+    
+          if (count >= limit) {
+            break;
+          }
+        }
+
+        casting.forEach((actor) => {
+          let castPart = document.querySelector(".castPart");
+    
+          castPart.innerHTML +=`
+            <div class="actorDiv">
+                <img src="https://image.tmdb.org/t/p/w200/${actor.profile_path}">
+                <p>${actor.name}</p> 
+            </div>`
+        });
+
+        let directorArray = [];
+        let directorString = "";
+
+        for (let crewMember of tvshow.credits.crew) {
+            if (crewMember.job === "Creator") {
+                directorArray.push(crewMember.name);
+            }
+        }
+
+    directorString = directorArray.join(", ");
 
         let tvshowInfoDisplay = document.getElementById("tvshowInfoDisplay");
 
@@ -42,12 +76,13 @@ async function tvshowInfo(){
                     <img src="https://image.tmdb.org/t/p/w500/${tvshow.poster_path}" alt="${tvshow.original_name} Poster">   
                 </div>
                 <div class="rightPart">
-                    <p><span class="infoName">Synopsis</span> : ${tvshow.overview}</p>
-                    <p><span class="infoName">First Air Date</span> : ${tvshow.first_air_date}</p>
-                    <p><span class="infoName">Genre(s)</span> : ${genresString}<p>
-                    <p><span class="infoName">Popularity</span> : ${tvshow.popularity}</p>
-                    <p><span class="infoName">Average Vote</span> : ${tvshow.vote_average}</p>
-                    <p><span class="infoName">Production</span> : ${companiesString}</p>
+                    <p><span class="infoName">Synopsis : </span>${tvshow.overview}</p>
+                    <p><span class="infoName">Creator : </span>${directorString}</p>
+                    <p><span class="infoName">First Air Date : </span>${tvshow.first_air_date}</p>
+                    <p><span class="infoName">Genre(s) : </span>${genresString}<p>
+                    <p><span class="infoName">Popularity : </span>${tvshow.popularity}</p>
+                    <p><span class="infoName">Average Vote : </span>${tvshow.vote_average}</p>
+                    <p><span class="infoName">Production : </span>${companiesString}</p>
                 </div>
             </div>`;
 
@@ -73,7 +108,7 @@ async function relatedTvshow(id){
         let response = await fetch("https://api.themoviedb.org/3/tv/"+genreId+"/similar", options);
         let relateds = await response.json();
         let relatedTvshowDiv = document.getElementById("relatedTvshowDiv");
-        let results = relateds.results.slice(0, 5);
+        let results = relateds.results.slice(0, 6);
         console.log(results);
         for (let related of results){
          
