@@ -14,7 +14,9 @@
     <div class="movieMain">
         <h1>Movie</h1>
         <div class="checkboxDiv" id="checkboxDiv"></div>
+        <div class="paginationDiv"></div>
         <div class="movieDisplay" id="movieDisplay"></div>
+        <div class="paginationDiv"></div>
     </div>
     
 </main>

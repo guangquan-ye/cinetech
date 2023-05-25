@@ -20,6 +20,7 @@ nav{
    justify-content: space-around;
    align-items: center;
 }
+
 .link a{
     text-decoration: none;
     font-size: 28px;
@@ -59,6 +60,24 @@ nav{
     color: white;
     font-family: 'Paytone One', sans-serif;
     margin-left: 5%;
+}
+
+.paginationDiv{
+    display: flex;
+    margin: 5%;
+    justify-content: space-between;
+    color: white;
+}
+.paginationDiv p{
+    font-size: 18px;
+    font-family: 'Paytone One', sans-serif;
+}
+.paginationDiv button{
+   border: none;
+   background: none;
+   font-size: 22px;
+   font-family: 'Monoton', cursive;
+   color: white;
 }
 .movieContainer, .tvshowContainer{
     display: flex;
@@ -188,6 +207,7 @@ span.infoName{
 }
 .moviephpDiv img, .tvshowDiv img{
     width: 100%;
+    height: 360px;
 }
 .commentDisplay{
     margin-top: 10%;
@@ -281,7 +301,7 @@ span.infoName{
         margin-right: 0%;
         box-shadow: rgba(169, 99, 255) 0px 0px 0px 3px;
     }
-    .movieGallery {
+    .movieGallery, .tvshowGallery {
         width: 100%;
         padding: 1rem;
         display: grid;
@@ -291,22 +311,15 @@ span.infoName{
         
         justify-content: center;
     }
-    .movieGallery img{
+    .movieGallery img, .tvshowGallery img{
         width: 100%;
     }
 
-    .tvshowGallery {
+    .moviephpDiv img, .tvshowDiv img {
         width: 100%;
-        padding: 1rem;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(0, 200px);
-        grid-column-gap: 0.8rem;
-        justify-content: center;
+        height: 390px;
     }
-    .tvshowGallery img{
-        width: 100%;
-    }
+    
     .infoDisplay{
         display: flex;
         justify-content: center;

@@ -13,7 +13,9 @@
 <div class="movieMain">
         <h1>Tv Show</h1>
         <div class="checkboxDiv" id="checkboxDiv"></div>
+        <div class="paginationDiv"></div>
         <div class="tvshowDisplay" id="tvshowDisplay"></div>
+        <div class="paginationDiv"></div>
     </div>
 
 <script src="./src/script/tvshow.js"></script>
