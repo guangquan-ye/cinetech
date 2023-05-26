@@ -58,12 +58,17 @@ $router->map('GET', '/login', function(){
     $user->logFormDisplay();
 }, 'logFormDisplay');
 
-$router->map('POST', '/login' , function(){
+$router->map('POST', '/login', function(){
     if(isset($_POST["logBtn"])){
     $user = new UserController();
     $user->connect($_POST["logLogin"], $_POST["logPwd"]);
     }
 }, 'userslogin');
+
+$router->map('GET', '/logout', function(){
+    $user = new UserController();
+    $user->logout();
+}, 'logout');
 
 // match current request url
 $match = $router->match();

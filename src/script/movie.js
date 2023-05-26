@@ -53,6 +53,7 @@ const genreArray = [];
 
 function composeArray(value) {
   genreArray.push(value);
+  currentPage = 1;
   updateGenresString();
 }
 
@@ -60,6 +61,7 @@ function decomposeArray(value) {
   const index = genreArray.indexOf(value);
   if (index !== -1) {
     genreArray.splice(index, 1);
+    currentPage = 1;
     updateGenresString();
   }
 }
@@ -111,7 +113,6 @@ async function getMovieByGenre(genresString, page, perPage) {
       }
     }
 
-  
     const paginationDivs = document.querySelectorAll(".paginationDiv");
     paginationDivs.forEach((paginationDiv)=>{
       paginationDiv.innerHTML = '';
@@ -131,15 +132,8 @@ async function getMovieByGenre(genresString, page, perPage) {
       paginationDiv.appendChild(nbPage);
       paginationDiv.appendChild(nextButton);
     })
-
-
-    
-
-
     
     previousButton.disabled = currentPage === 1;
-
-   
     nextButton.disabled = data.results.length < perPage;
 
   } catch (error) {

@@ -32,6 +32,7 @@ Class UserController{
 
             }else{
                 $this->user->insert($login, $password);
+                header('Location: /cinetech');
             }
         }
     }
@@ -48,8 +49,13 @@ Class UserController{
               "id" => $result["id"],
               "login" => $result["login"]
           ];
-          var_dump($_SESSION["user"]);
+          header('Location: /cinetech');
          }
+      }
+
+      public function logout(){
+        session_destroy();
+        header('Location: /cinetech');
       }
     
     

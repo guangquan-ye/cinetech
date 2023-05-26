@@ -11,19 +11,25 @@ let options = {
 
 function displayResults(results) {
   const ul = document.createElement('ul');
-  const maxResults = Math.min(results.length, 10); 
-
-  for (let i = 0; i < maxResults; i++) {
-    
-    const result = results[i];
-    const li = document.createElement('li');
-    const link = document.createElement('a');
-    link.href = "/cinetech/movie/" + result.id;
-    link.textContent = result.title;
-    li.appendChild(link);
-    ul.appendChild(li);
-  }
-
+  results.forEach(result => {
+    if (result.media_type === 'movie') {
+      ul.innerHTML += (
+        `<li><span class="infoName">Movie : </span>
+            <a href="/cinetech/movie/${result.id}">
+              ${result.title}
+            </a>
+        </li>`
+      )
+    } else if (result.media_type === 'tv') {
+      ul.innerHTML += (
+        `<li><span class="infoName">Tvshow : </span> 
+            <a href="/cinetech/tv/${result.id}">
+              ${result.name}
+            </a>
+        </li>`
+      )
+    } 
+  })
   searchResults.appendChild(ul);
 }
 

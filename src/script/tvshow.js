@@ -53,6 +53,7 @@ const genreArray = [];
 
 function composeArray(value) {
   genreArray.push(value);
+  currentPage = 1;
   updateGenresString();
 }
 
@@ -60,6 +61,7 @@ function decomposeArray(value) {
   const index = genreArray.indexOf(value);
   if (index !== -1) {
     genreArray.splice(index, 1);
+    currentPage = 1;
     updateGenresString();
   }
 }
@@ -70,7 +72,7 @@ function arrayToString(array) {
 
 function updateGenresString() {
   const genresString = arrayToString(genreArray);
-  console.log(genresString);
+  console.log(currentPage);
   getTVShowByGenre(genresString, currentPage, tvshowsPerPage);
 }
 
