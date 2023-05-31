@@ -22,5 +22,6 @@
 </main>
     <script src="./src/script/movie.js"></script>
     <script src="./src/script/search.js"></script>
+    <script src="./src/script/auth.js"></script>
 </body>
 </html>

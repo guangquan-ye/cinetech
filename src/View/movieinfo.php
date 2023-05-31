@@ -20,11 +20,14 @@
     <div class="relatedDiv" id="relatedMovieDiv"></div>
     
     </div>
-    <div class="commentDisplay" id="commentDisplay"></div>
+    <div class="commentDisplay" id="commentDisplay">
+    <div id="commentReplyDiv"></div>
+    </div>
 
     <script src="../src/script/movieinfo.js"></script>
     <script src="../src/script/search.js"></script>
     <script src="../src/script/comment.js"></script>
+    <script src="../src/script/auth.js"></script>
 
 </body>
 

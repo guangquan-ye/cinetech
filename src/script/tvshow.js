@@ -107,7 +107,7 @@ async function getTVShowByGenre(genresString, page, perPage) {
         let tvshow = data.results[i];
         tvshowDisplay.innerHTML += `
           <div class="tvshowDiv">
-            <a href="/cinetech/tvshow/${tvshow.id}"><img src="https://image.tmdb.org/t/p/w500/${tvshow.poster_path}" alt="${tvshow.original_name} Poster"></a>
+            <a href="/cinetech/tv/${tvshow.id}"><img src="https://image.tmdb.org/t/p/w500/${tvshow.poster_path}" alt="${tvshow.original_name} Poster"></a>
           </div>
         `;
       }

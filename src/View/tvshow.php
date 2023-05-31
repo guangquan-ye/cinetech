@@ -20,5 +20,6 @@
 
 <script src="./src/script/tvshow.js"></script>
 <script src="./src/script/search.js"></script>
+<script src="./src/script/auth.js"></script>
 </body>
 </html>

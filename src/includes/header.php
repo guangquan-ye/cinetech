@@ -4,19 +4,21 @@
         </div>
         <div class="link">
             <?php if(isset($_SESSION["user"])) : ?>
-                <p>Bonjour <span class="infoName"><?= $_SESSION["user"]["login"] ?></span></p>
+                <div class="userdiv">
+                <p>Bonjour&ensp;<span class="infoName"><?= $_SESSION["user"]["login"] ?></span></p>
+                </div>
                 <a href="/cinetech/logout">Logout</a>
             <?php else : ?>
-                <button id="loginDisplayBtn">Login</button>
-                <button id="regDisplayBtn">Register</button>
+                <button id="loginDisplayBtn" class="buttonone">Login</button>
+                <button id="regDisplayBtn" class="buttonone">Register</button>
             <?php endif ?>
             <a href="/cinetech/movie">Movie</a>
             <a href="/cinetech/tv">TvShow</a>
-            <div class="searchbar">
-                <input type="text" id="search">
-                <div id="searchResults"></div>
-            </div> 
         </div>
+        <div class="searchbar">
+            <input type="text" id="search" placeholder="Search...">
+            <div id="searchResults"></div>
+        </div> 
     </nav>
     <div class="formDisplay" id="formDisplay"></div>
     

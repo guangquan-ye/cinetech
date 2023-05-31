@@ -5,6 +5,7 @@ require_once 'vendor/autoload.php';
 use App\Controller\MovieController;
 use App\Controller\TvshowController;
 use App\Controller\UserController;
+use App\Controller\CommentController;
 
 session_start();
 
@@ -50,6 +51,7 @@ $router->map('POST', '/register', function(){
     if(isset($_POST["regBtn"])){
         $user = new UserController();
         $user->createUsers($_POST["regLogin"], $_POST["regPwd"], $_POST["regPwdConf"]);
+        header('Location: /cinetech');
     }
 }, 'usersregister');
 
@@ -62,6 +64,7 @@ $router->map('POST', '/login', function(){
     if(isset($_POST["logBtn"])){
     $user = new UserController();
     $user->connect($_POST["logLogin"], $_POST["logPwd"]);
+    header('Location: /cinetech');
     }
 }, 'userslogin');
 
@@ -69,6 +72,17 @@ $router->map('GET', '/logout', function(){
     $user = new UserController();
     $user->logout();
 }, 'logout');
+
+$router->map('POST', '/comment', function(){
+    if(isset($_POST["comment"])){
+        var_dump($_SESSION["user"]["id"]);
+        var_dump($_POST["commentId"]);
+        var_dump($_POST["commentText"]);
+        $comment = new CommentController();
+        $comment->replyComment($_POST["commentId"], $_POST["commentText"], $_SESSION["user"]["id"]);
+    }
+    
+}, 'comment');
 
 // match current request url
 $match = $router->match();

@@ -23,5 +23,6 @@
     <script src="../src/script/tvshowinfo.js"></script>
     <script src="../src/script/search.js"></script>
     <script src="../src/script/comment.js"></script>
+    <script src="./src/script/auth.js"></script>
 </body>
 </html>

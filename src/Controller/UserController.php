@@ -22,6 +22,10 @@ Class UserController{
         require_once "./src/View/login.php";
     }
     
+    public function displayReply()
+    {
+        require_once "./src/View/comment.php";
+    }
 
     public function createUsers($login, $password, $passwordConf)
     {
@@ -31,25 +35,33 @@ Class UserController{
             if($this->user->verifyExist($login)){
 
             }else{
-                $this->user->insert($login, $password);
-                header('Location: /cinetech');
+                $specialLogin = htmlspecialchars($login);
+                $specialPwd = htmlspecialchars($password);
+                $hashedPwd = password_hash($specialPwd, PASSWORD_DEFAULT);
+                $this->user->insert($specialLogin, $hashedPwd);
+                
             }
         }
     }
     public function ifExist($login)
     {
+        htmlspecialchars($login);
+        
         return $this->user->ifLoginExist($login);
     }
 
     public function connect($login, $password){
 
+        htmlspecialchars($login);
+        htmlspecialchars($password);
+
         $result = $this->ifExist($login);
-         if($result["password"] == $password){
+        if (password_verify($password, $result["password"])) {
           $_SESSION["user"] = [
               "id" => $result["id"],
               "login" => $result["login"]
           ];
-          header('Location: /cinetech');
+          
          }
       }
 

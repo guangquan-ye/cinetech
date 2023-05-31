@@ -38,7 +38,7 @@ async function createCarousel() {
   try {
     let response = await fetch("https://api.themoviedb.org/3/trending/movie/day?language=en-US", options);
     let movies = await response.json();
-    console.log(movies)
+  
 
     let movieDisplayDiv = document.getElementById("movieDisplayDiv");
 

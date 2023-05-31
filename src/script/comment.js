@@ -1,54 +1,143 @@
 const commentUri = window.location.pathname;
-const commentParts = uri.split("/");
-const commentId = parts[parts.length - 1];
-const commentName = parts[parts.length - 2];
+const commentParts = commentUri.split("/");
+const commentId = commentParts[commentParts.length - 1];
+const commentName = commentParts[commentParts.length - 2];
 
-console.log(commentId)
-console.log(commentName);
-
-async function getComment(){
-    let options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOWRlNjFjMzk3YzEwZTA4YTI5M2UyOTgyYmYzNzdmNCIsInN1YiI6IjY0NjFlZDgzZGJiYjQyMDE1MzA2YmQzMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Zt5c8JdoJm2dmE-y7Xkt7-8PoRXsZ8qx60YIx5YyJGU'
-        }
-      };
-    try {
-        let response = await fetch("https://api.themoviedb.org/3/" + commentName + "/" + commentId + "/reviews", options);
-        let comments = await response.json();
-        let commentDisplay = document.querySelector("#commentDisplay");
-        
-        
-        commentDisplay.innerHTML = ""; // Clear existing content
-
-        for (let comment of comments.results) {
-
-            let commentCreateDate = comment.created_at
-            let commentEditDate = comment.updated_at
-            const createDate = commentCreateDate.split("T")[0];
-            const editDate = commentEditDate.split("T")[0];
-            
-            commentDisplay.innerHTML += `
-              <div class="commentDiv">
-                <div class="commentLeftDiv">
-                <img src="https://image.tmdb.org/t/p/w200/${comment.author_details.avatar_path}" alt="Author Avatar">
-                <p><span class="infoName">By : </span>${comment.author}</p>
-                </div>
-                <div class="commentRightDiv">
-                    <p>${comment.content}</p>
-                    <div class="dateDiv">
-                        <p><span class="infoName">Posted : </span>${createDate}</p>
-                        <p><span class="infoName">Edit : </span>${editDate}</p>
-                        
-                    </div>
-                </div>
-              </div>
-            `;
-          }
-    } 
-    catch (error) {
-    console.error("An error occurred while retrieving .", error);
+async function getComment() {
+  let options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOWRlNjFjMzk3YzEwZTA4YTI5M2UyOTgyYmYzNzdmNCIsInN1YiI6IjY0NjFlZDgzZGJiYjQyMDE1MzA2YmQzMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Zt5c8JdoJm2dmE-y7Xkt7-8PoRXsZ8qx60YIx5YyJGU'
     }
+  };
+
+  try {
+    let response = await fetch("https://api.themoviedb.org/3/" + commentName + "/" + commentId + "/reviews", options);
+    let comments = await response.json();
+    let commentDisplay = document.querySelector("#commentDisplay");
+
+    commentDisplay.innerHTML = "";
+
+    for (let comment of comments.results) {
+      console.log(comment);
+      let commentDiv = document.createElement("div");
+      commentDiv.classList.add("commentDiv");
+
+      let commentLeftDiv = document.createElement("div");
+      commentLeftDiv.classList.add("commentLeftDiv");
+
+      let authorName = document.createElement("p");
+      authorName.innerHTML = "<span class='infoName'>By: </span>" + comment.author;
+      commentLeftDiv.appendChild(authorName);
+      
+      let authorRating = document.createElement("p");
+      authorRating.innerHTML="<span class='infoName'>Rating: </span>" + comment.author_details.rating;
+      commentLeftDiv.appendChild(authorRating);
+
+      commentDiv.appendChild(commentLeftDiv);
+
+      let commentRightDiv = document.createElement("div");
+      commentRightDiv.classList.add("commentRightDiv");
+
+      let commentContent = document.createElement("p");
+      commentContent.textContent = comment.content;
+      commentRightDiv.appendChild(commentContent);
+
+      let dateDiv = document.createElement("div");
+      dateDiv.classList.add("dateDiv");
+
+      let createDate = document.createElement("p");
+      createDate.innerHTML = "<span class='infoName'>Posted: </span>" + comment.created_at.split("T")[0];
+      dateDiv.appendChild(createDate);
+
+      let editDate = document.createElement("p");
+      editDate.innerHTML = "<span class='infoName'>Edit: </span>" + comment.updated_at.split("T")[0];
+      dateDiv.appendChild(editDate);
+
+      let commentBtn = document.createElement("button");
+      commentBtn.id = comment.id;
+      commentBtn.classList.add("commentBtn");
+      commentBtn.textContent = "Comment";
+      dateDiv.appendChild(commentBtn);
+
+      let commentReplyDiv = document.createElement("div");
+      let commentSubmit = document.querySelector("#commentSubmit");
+      commentRightDiv.appendChild(dateDiv);
+      commentDiv.appendChild(commentRightDiv);
+
+      commentDisplay.appendChild(commentDiv);
+      commentDisplay.appendChild(commentReplyDiv);
+
+      commentBtn.addEventListener("click", function (e) {
+        e.preventDefault()
+        displayReplyInput(commentReplyDiv, commentBtn.id);
+      });
+
+      commentSubmit.addEventListener("click", function(e){
+        e.preventDefault();
+        let commentForm = document.querySelector("#commentForm");
+        let data = new FormData(commentForm);
+
+        data.append("comment", "ok");
+        fetch("/src/Controller/userController.php", {
+          method: "POST",
+          body: data,
+        })
+        .then((response) => {
+          return response.text();
+        })
+        .then((content) => {
+          formDisplay.textContent = content;
+          console.log(content);
+        });
+      })
+      
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
-getComment()
+
+
+async function displayReplyInput(commentReplyDiv, commentBtn) {
+  let form = document.createElement('form');
+  let input = document.createElement('input');
+  let button = document.createElement('button');
+
+  input.type = 'text';
+  button.type = 'submit';
+  button.textContent = 'Submit';
+  button.value = commentBtn;
+
+  form.appendChild(input);
+  form.appendChild(button);
+  commentReplyDiv.appendChild(form);
+  console.log(button);
+  console.log(form);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    let formData = new FormData(form);
+    formData.append('comment', 'ok');
+    formData.append('commentId', commentBtn);
+    formData.append("commentText", input.value);
+
+    fetch('/cinetech/comment', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((content) => {
+        console.log(content);
+       
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+}
+
+getComment();
+

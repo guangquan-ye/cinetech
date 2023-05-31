@@ -4,10 +4,13 @@ body{
     margin: 0;
     background-color: #360429;
 }
+
 nav{
     background-color: #360429;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-right: 5%;
 }
 .formDisplay{
     position: absolute;
@@ -15,13 +18,7 @@ nav{
     top: 50%;
     transform: translate(-50%, -50%);
 }
-.regForm, .logForm{
-    display: flex;
-    flex-direction: column;
-    border: white 2px solid;
-    padding: 5%;
-    gap: 20px;
-}
+
 .logoDiv img{
     width: 80%;
 }
@@ -37,6 +34,7 @@ nav{
     font-size: 22px;
     font-family: 'Monoton', cursive;
     color: white;
+    gap: 20px;
 }
 
 .link a{
@@ -52,16 +50,22 @@ nav{
     font-family: 'Monoton', cursive;
     color: white;
 }
+.link a:hover, .link button:hover{
+    transform: scale(1.1);
+    color: #B3DEC1;
+}
 
   #searchResults{
     position: absolute;
     max-width: 300px;
+    
   }
 
   #searchResults ul {
     list-style-type: none;
     padding: 2%;
     background-color: #00000041;
+    border: 2px solid rgba(169, 99, 255);
   }
   
   #searchResults li {
@@ -80,6 +84,15 @@ nav{
   }
   #searchResults a:hover {
     text-decoration: underline;
+  }
+  #search{
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #B3DEC1;
+    outline: none;
+    background: transparent;
   }
 /* -------------------------HOME-------------------------- */
 .frontDisplay h1{
@@ -105,10 +118,13 @@ nav{
    font-family: 'Monoton', cursive;
    color: white;
 }
+
+.paginationDiv button:hover{
+    color: #B3DEC1;
+}
 .movieContainer, .tvshowContainer{
     display: flex;
     justify-content: center;
-    background-color: #360429;
 }
 .movieGallery, .tvshowGallery{
     width: 90%;
@@ -217,6 +233,17 @@ span.infoName{
     margin-left: 5%;
     margin-right: 5%;
     box-shadow: rgba(169, 99, 255) 0px 0px 0px 3px;
+    border-radius: 10px;
+}
+.userdiv{
+    border: 1px black solid;
+    box-shadow: rgba(169, 99, 255) 0px 0px 0px 3px;
+    padding: 1%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    
 }
 /* ------------------------MOVIE DISPLAY------------------------------- */
 .movieDisplay, .tvshowDisplay{
@@ -234,6 +261,7 @@ span.infoName{
 .moviephpDiv img, .tvshowDiv img{
     width: 100%;
     height: 100%;
+    
 }
 .commentDisplay{
     margin-top: 10%;
@@ -305,12 +333,20 @@ span.infoName{
         display: flex;
         justify-content: center;
         gap: 5%;
+        margin-bottom: 5%;
     }
     .link a{
         text-decoration: none;
-        font-size: 16px;
+        font-size: 15px;
         font-family: 'Monoton', cursive;
         color: white;
+    }
+    .link p{
+        display: none;
+        
+    }
+    .link button{
+        font-size: 15px;
     }
     body{
         margin: 5%;
@@ -367,7 +403,7 @@ span.infoName{
     }
     .castPart{
         display: grid;
-        grid-template-columns: repeat(3, 110px);
+        grid-template-columns: repeat(2, 150px);
         justify-content: center;
         gap: 10px;
     }
@@ -376,7 +412,7 @@ span.infoName{
         flex-direction: column;
     }
     .actorDiv img{
-        height: 160px;
+        height: 180px;
         border-radius: 90px;
     }
     .rightPart{
@@ -414,6 +450,7 @@ span.infoName{
         display: flex;
         flex-direction: row;
         width: 90%;
+        font-size: 14px;
         padding: 3%;
         margin-left: 1%;
         margin-right: 1%;
@@ -430,7 +467,7 @@ span.infoName{
     
         margin: 5%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
+        grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
         gap: 15px;
     }
 }
@@ -454,12 +491,16 @@ span.infoName{
         display: flex;
         justify-content: center;
         gap: 5%;
+        margin-bottom: 5%;
     }
     .link a{
         text-decoration: none;
-        font-size: 30px;
+        font-size: 28px;
         font-family: 'Monoton', cursive;
         color: white;
+    }
+    .link button{
+        font-size: 28px;
     }
     body{
         margin: 5%;
@@ -529,8 +570,9 @@ span.infoName{
         flex-direction: column;
     }
     .actorDiv img{
-        height: 160px;
+        height: 140px;
         border-radius: 90px;
+        width: 100px;
     }
     .relatedDiv{
 
@@ -557,6 +599,7 @@ span.infoName{
     .commentLeftDiv{
         width: 92%;
         padding: 3%;
+        font-size: 22px;
         margin-left: 1%;
         margin-right: 1%;
     }
@@ -577,3 +620,123 @@ span.infoName{
         gap: 15px;
     }
 }
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 90px;
+    border: 2px solid rgba(169, 99, 255);
+    transform: translate(-50%, -50%);
+    background-image: url("https://media.giphy.com/media/xUOwGcu6wd0cXBj5n2/giphy.gif");
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+  
+  .login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    font-family: 'Monoton', cursive;
+    text-align: center;
+
+  }
+  
+  .login-box .user-box {
+    position: relative;
+  }
+  
+  .login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    font-family: 'Paytone One', sans-serif;
+    
+  }
+  .login-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+    font-family: 'Paytone One', sans-serif;
+  }
+  
+  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #B3DEC1;
+    font-size: 14px;
+    
+  }
+  .buttonone{
+    border: none;
+    background: none;
+    font-size: 22px;
+    font-family: 'Paytone One', sans-serif;
+    color: white;
+  }
+  .buttonone:hover{
+    color: #B3DEC1;
+    transform: scale(1.1);
+  }
+
+
+.commentBtn, .authBtn {
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: 'Paytone One', sans-serif;  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+ 
+}
+
+.commentBtn:hover {
+  background-color: #B3DEC1;
+}
+
+.authBtn:hover{
+    color: white;
+    background-color: #B3DEC1;
+}
+.commentBtn:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.commentBtn:focus-visible {
+  box-shadow: none;
+}
+ 
+  
+ 
+  
+  
+  
+ 
+  
+  
+ 
+  
+ 
