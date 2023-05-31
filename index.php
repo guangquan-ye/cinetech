@@ -6,6 +6,7 @@ use App\Controller\MovieController;
 use App\Controller\TvshowController;
 use App\Controller\UserController;
 use App\Controller\CommentController;
+use App\Controller\FavoriteController;
 
 session_start();
 
@@ -84,6 +85,17 @@ $router->map('POST', '/comment', function(){
     
 }, 'comment');
 
+$router->map('GET', '/comment/[a:action]', function($action){
+    $comment = new CommentController();
+    $comment->getReply($action);
+},'getReply');
+
+$router->map('POST', '/favorite', function(){
+    if(isset($_POST["favorite"])){
+        $fav = new FavoriteController();
+        $fav->addFavorite($_POST["typeName"], $_POST["typeId"], $_SESSION["user"]["id"]);
+    }
+},'addFav');
 // match current request url
 $match = $router->match();
 

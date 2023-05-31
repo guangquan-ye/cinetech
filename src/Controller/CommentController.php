@@ -20,4 +20,8 @@ Class CommentController{
         $this->comment->insert($commentId, $commentText, $userId);
 
     }
+
+    function getReply($commentId){
+        echo json_encode($this->comment->selectReply($commentId));
+    }
 }

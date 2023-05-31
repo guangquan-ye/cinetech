@@ -14,6 +14,7 @@
     <?php require_once "./src/includes/header.php" ?>
     <div class="info">
     <div class="infoDisplay" id="movieInfoDisplay"></div>
+        <button id="addFavoriteBtn" name="addFavoriteBtn">Add to favorite</button>
     <div class="castPart"></div>
     
     <h1>Related Movie</h1>
@@ -28,6 +29,7 @@
     <script src="../src/script/search.js"></script>
     <script src="../src/script/comment.js"></script>
     <script src="../src/script/auth.js"></script>
+    <script src="../src/script/addfavorite.js"></script>
 
 </body>
 

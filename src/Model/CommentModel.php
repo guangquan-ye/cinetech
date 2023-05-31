@@ -18,4 +18,16 @@ Class CommentModel{
             
         ]);
     }
+
+    public function selectReply($commentId)
+    {   
+        
+        $select ="SELECT * FROM comment WHERE comment_id = :comment_id";
+        $prepare = DbConnexion::getDb()->prepare($select);
+        $prepare->execute([
+            "comment_id" => $commentId
+        ]);
+        $result = $prepare->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

@@ -328,6 +328,10 @@ span.infoName{
     .logoDiv img{
         width: 100%;
     }
+    .userdiv{
+        border: none;
+        box-shadow: none;
+    }
     .link{
         width: 100%;
         display: flex;
@@ -485,6 +489,10 @@ span.infoName{
     }
     .logoDiv img{
         width: 100%;
+    }
+    .userdiv{
+        border: none;
+        box-shadow: none;
     }
     .link{
         width: 100%;

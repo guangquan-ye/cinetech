@@ -12,6 +12,7 @@
     
     <div class="info">
         <div class="infoDisplay" id="tvshowInfoDisplay"></div>
+        <button id="addFavoriteBtn" name="addFavoriteBtn">Add to favorite</button>
         <div class="castPart"></div>
         <h1>Related Tvshow</h1>
         <div class="relatedDiv" id="relatedTvshowDiv"></div>
@@ -23,6 +24,7 @@
     <script src="../src/script/tvshowinfo.js"></script>
     <script src="../src/script/search.js"></script>
     <script src="../src/script/comment.js"></script>
-    <script src="./src/script/auth.js"></script>
+    <script src="../src/script/auth.js"></script>
+    <script src="../src/script/addfavorite.js"></script>
 </body>
 </html>

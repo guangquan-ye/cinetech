@@ -1,7 +1,7 @@
 const commentUri = window.location.pathname;
 const commentParts = commentUri.split("/");
-const commentId = commentParts[commentParts.length - 1];
-const commentName = commentParts[commentParts.length - 2];
+const typeId = commentParts[commentParts.length - 1];
+const typeName = commentParts[commentParts.length - 2];
 
 async function getComment() {
   let options = {
@@ -13,7 +13,7 @@ async function getComment() {
   };
 
   try {
-    let response = await fetch("https://api.themoviedb.org/3/" + commentName + "/" + commentId + "/reviews", options);
+    let response = await fetch("https://api.themoviedb.org/3/" + typeName + "/" + typeId + "/reviews", options);
     let comments = await response.json();
     let commentDisplay = document.querySelector("#commentDisplay");
 
@@ -140,4 +140,3 @@ async function displayReplyInput(commentReplyDiv, commentBtn) {
 }
 
 getComment();
-
