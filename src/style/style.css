@@ -733,6 +733,13 @@ span.infoName{
     text-align: center;
 
   }
+  .login-box p{
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Paytone One', sans-serif;
+    padding-bottom: 2%;
+  }
   
   .login-box .user-box {
     position: relative;

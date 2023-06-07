@@ -1,5 +1,6 @@
 <div class="login-box">
   <h2>Login</h2>
+  <p id="logMsg"></p>
   <form action="login" method="POST" class="logForm">
     <div class="user-box">
       <input type="text" name="logLogin" required="">

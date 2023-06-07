@@ -33,14 +33,20 @@ Class UserController{
         if($password == $passwordConf){
             
             if($this->user->verifyExist($login)){
-
+                echo "Login already exist";
             }else{
                 $specialLogin = htmlspecialchars($login);
                 $specialPwd = htmlspecialchars($password);
                 $hashedPwd = password_hash($specialPwd, PASSWORD_DEFAULT);
                 $this->user->insert($specialLogin, $hashedPwd);
-                header('Location: /cinetech');
-            }
+
+                echo "Succesfully Submit";
+            } 
+                
+            
+        }
+        else{
+            echo "Pwd and confirm do not match";
         }
         
     }
@@ -57,21 +63,23 @@ Class UserController{
         htmlspecialchars($password);
 
         $result = $this->ifExist($login);
+
         if (password_verify($password, $result["password"])) {
           $_SESSION["user"] = [
               "id" => $result["id"],
               "login" => $result["login"]
           ];
-          header('Location: /cinetech');
-          
+          echo "Welcome";
          }
+        else{
+            echo "Wrong login or pwd" ;
+        }
       }
 
       public function logout(){
         session_destroy();
         header('Location: /cinetech');
       }
-    
     
 }
 ?>

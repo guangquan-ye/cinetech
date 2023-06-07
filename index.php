@@ -49,12 +49,12 @@ $router->map('GET', '/register', function(){
 }, 'regFormDisplay');
 
 $router->map('POST', '/register', function(){
-    if(isset($_POST["regBtn"])){
+    if(isset($_POST)){
         $user = new UserController();
         $user->createUsers($_POST["regLogin"], $_POST["regPwd"], $_POST["regPwdConf"]);
         
     }
-}, 'usersregister');
+}, 'register');
 
 $router->map('GET', '/login', function(){
     $user = new UserController();
@@ -62,7 +62,7 @@ $router->map('GET', '/login', function(){
 }, 'logFormDisplay');
 
 $router->map('POST', '/login', function(){
-    if(isset($_POST["logBtn"])){
+    if(isset($_POST)){
     $user = new UserController();
     $user->connect($_POST["logLogin"], $_POST["logPwd"]);
    

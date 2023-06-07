@@ -1,5 +1,6 @@
 <div class="login-box">
   <h2>Register</h2>
+  <p id="regMsg"></p>
   <form action="register" method="POST" class="regForm">
     <div class="user-box">
       <input type="text" name="regLogin" required="">
