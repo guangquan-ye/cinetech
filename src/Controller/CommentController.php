@@ -23,7 +23,7 @@ Class CommentController{
 
     }
 
-    function getReply($commentId){
-        echo json_encode($this->comment->selectReply($commentId));
+    function getReply($typeId){
+        echo json_encode($this->comment->selectReply($typeId));
     }
 }

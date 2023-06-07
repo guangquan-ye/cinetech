@@ -21,13 +21,13 @@ Class CommentModel{
         ]);
     }
 
-    public function selectReply($commentId)
+    public function selectReply($typeId)
     {   
         
-        $select ="SELECT * FROM comment WHERE comment_id = :comment_id";
+        $select ="SELECT * FROM comment WHERE type_id = :type_id";
         $prepare = DbConnexion::getDb()->prepare($select);
         $prepare->execute([
-            "comment_id" => $commentId
+            "type_id" => $typeId
         ]);
         $result = $prepare->fetchAll(\PDO::FETCH_ASSOC);
         return $result;

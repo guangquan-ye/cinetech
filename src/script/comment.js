@@ -3,7 +3,6 @@ const commentParts = commentUri.split("/");
 const typeId = commentParts[commentParts.length - 1];
 const typeName = commentParts[commentParts.length - 2];
 
-
 async function getComment() {
   let options = {
     method: 'GET',
@@ -19,22 +18,27 @@ async function getComment() {
     let commentDisplay = document.querySelector("#commentDisplay");
 
     commentDisplay.innerHTML = "";
-
+    let commentId = [];
     for (let comment of comments.results) {
-      
-      
       let commentDiv = document.createElement("div");
       commentDiv.classList.add("commentDiv");
+      
+      let repliesDiv = document.createElement("div");
+      repliesDiv.id = comment.id
+      repliesDiv.classList.add("repliesDiv");
+      
 
+      commentId.push(comment.id);
+      console.log(commentId);
       let commentLeftDiv = document.createElement("div");
       commentLeftDiv.classList.add("commentLeftDiv");
 
       let authorName = document.createElement("p");
       authorName.innerHTML = "<span class='infoName'>By: </span>" + comment.author;
       commentLeftDiv.appendChild(authorName);
-      
+
       let authorRating = document.createElement("p");
-      authorRating.innerHTML="<span class='infoName'>Rating: </span>" + comment.author_details.rating;
+      authorRating.innerHTML = "<span class='infoName'>Rating: </span>" + comment.author_details.rating;
       commentLeftDiv.appendChild(authorRating);
 
       commentDiv.appendChild(commentLeftDiv);
@@ -68,6 +72,8 @@ async function getComment() {
       commentRightDiv.appendChild(dateDiv);
       commentDiv.appendChild(commentRightDiv);
 
+      commentDiv.appendChild(repliesDiv);
+
       commentDisplay.appendChild(commentDiv);
       commentDisplay.appendChild(commentReplyDiv);
 
@@ -76,9 +82,7 @@ async function getComment() {
         displayReplyInput(commentReplyDiv, commentBtn.id);
       });
 
-      // getReply(typeId, commentDiv, commentBtn);
-
-      commentSubmit?.addEventListener("click", function(e){
+      commentSubmit?.addEventListener("click", function (e) {
         e.preventDefault();
         let commentForm = document.querySelector("#commentForm");
         let data = new FormData(commentForm);
@@ -88,15 +92,15 @@ async function getComment() {
           method: "POST",
           body: data,
         })
-        .then((response) => {
-          return response.text();
-        })
-        .then((content) => {
-          formDisplay.textContent = content;
-          
-        });
-      })
-      
+          .then((response) => {
+            response.text();
+          })
+          .then((content) => {
+            formDisplay.textContent = content;
+          });
+      });
+
+      await displayRepliesOfComment(comment.id);
     }
   } catch (error) {
     console.error(error);
@@ -119,7 +123,7 @@ async function displayReplyInput(commentReplyDiv, commentBtn) {
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-  
+
     let formData = new FormData(form);
     formData.append('comment', 'ok');
     formData.append("type", typeName);
@@ -133,31 +137,36 @@ async function displayReplyInput(commentReplyDiv, commentBtn) {
     })
       .then((response) => response.text())
       .then((content) => {
-        getComment()
-        getReply(commentBtn, commentDiv);
-       
+        getComment();
+        getReply(typeId, commentBtn);
       })
       .catch((error) => {
         console.error(error);
       });
   });
+
+  for (let id of commentId){
+    await displayRepliesOfComment(id);
+  }
 }
-// async function getReply(typeId, commentDiv, commentBtn) {
-  
-//   const promise = await fetch('/cinetech/getreplies/' + typeId);
 
-//   const replies = await promise.json();
-//   for (let reply of replies.results) {
-//     if (reply.type == typeName && reply.comment_id === commentBtn) {
-//       let replyContent = document.createElement("p");
-//       replyContent.textContent = reply.content;
-//       commentDisplay.appendChild(replyContent);
-//     }
-//   }
-//   console.log(replies);
-// }
+async function displayRepliesOfComment(commentId){
+  let repliesDiv = document.getElementById(commentId);
+  await getReply(typeId, commentId, repliesDiv);
+}
 
+async function getReply(typeId, commentBtn, repliesDiv) {
+  const promise = await fetch('/cinetech/getreplies/' + typeId);
+  const replies = await promise.json();
+
+  for (let reply of replies) {
+    if (reply.type == typeName && reply.comment_id === commentBtn) {
+      let replyContent = document.createElement("p");
+      replyContent.textContent = reply.content;
+
+      repliesDiv.appendChild(replyContent);
+    }
+  }
+}
 
 getComment();
-// getReply(typeId, commentDiv);
-
