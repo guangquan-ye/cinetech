@@ -11,13 +11,15 @@ Class CommentController{
         $this->comment = new CommentModel();
     }
 
-    function replyComment($commentId, $commentText, $userId)
+    function replyComment($type, $type_id, $commentId, $commentText, $userId)
     {
+        htmlspecialchars($type);
+        htmlspecialchars($type_id);
         htmlspecialchars($commentId);
         htmlspecialchars($commentText);
         htmlspecialchars($userId);
 
-        $this->comment->insert($commentId, $commentText, $userId);
+        $this->comment->insert($type, $type_id, $commentId, $commentText, $userId);
 
     }
 

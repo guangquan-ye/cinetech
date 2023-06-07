@@ -1,8 +1,15 @@
+// Récupération de l'URI de la page actuelle
 const uri = window.location.pathname;
+
+// Séparation de l'URI en parties en utilisant le séparateur "/"
 const parts = uri.split("/");
+
+// Récupération de l'ID du film à partir de la dernière partie de l'URI
 const movieId = parts[parts.length - 1];
 
+// Fonction asynchrone pour afficher les informations sur le film
 async function movieInfo() {
+  // Options de la requête HTTP pour récupérer les informations du film
   let options = {
     method: 'GET',
     headers: {
@@ -12,6 +19,7 @@ async function movieInfo() {
   };
 
   try {
+    // Requête à l'API TMDb pour récupérer les informations du film, y compris les crédits
     let response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=credits`, options);
     let movie = await response.json();
 
@@ -19,6 +27,7 @@ async function movieInfo() {
     let limit = 6;
     let count = 0;
 
+    // Extraction des informations de casting jusqu'à atteindre la limite spécifiée
     for (let actor of movie.credits.cast) {
       casting.push(actor);
       count++;
@@ -28,6 +37,7 @@ async function movieInfo() {
       }
     }
 
+    // Affichage des informations de casting
     casting.forEach((actor) => {
       let castPart = document.querySelector(".castPart");
 
@@ -41,6 +51,7 @@ async function movieInfo() {
     let directorArray = [];
     let directorString = "";
 
+    // Extraction des noms des réalisateurs à partir des membres de l'équipe
     for (let crewMember of movie.credits.crew) {
       if (crewMember.job === "Director") {
         directorArray.push(crewMember.name);
@@ -53,6 +64,7 @@ async function movieInfo() {
     let genres = movie.genres.map((genre) => genre.name).join(", ");
     let companies = movie.production_companies.map((company) => company.name).join(", ");
 
+    // Affichage des informations du film
     movieInfoDisplay.innerHTML = `
       <h1>${movie.original_title}</h1>
       <div class="infoDiv">
@@ -72,13 +84,16 @@ async function movieInfo() {
       </div> 
     `;
 
+    // Affichage des films similaires
     relatedMovie(movie.genres[0].id);
   } catch (error) {
     console.error("An error occurred while retrieving the movie.", error);
   }
 }
 
+// Fonction asynchrone pour récupérer les films similaires
 async function relatedMovie(id) {
+  // Options de la requête HTTP pour récupérer les films similaires
   let options = {
     method: 'GET',
     headers: {
@@ -88,11 +103,13 @@ async function relatedMovie(id) {
   };
 
   try {
+    // Requête à l'API TMDb pour récupérer les films similaires
     let response = await fetch(`https://api.themoviedb.org/3/movie/${id}/similar`, options);
     let relateds = await response.json();
     let relatedMovieDiv = document.getElementById("relatedMovieDiv");
     let results = relateds.results.slice(0, 6);
 
+    // Affichage des affiches de films similaires
     for (let related of results) {
       relatedMovieDiv.innerHTML += `
         <a href="/cinetech/movie/${related.id}"><img src="https://image.tmdb.org/t/p/w500/${related.poster_path}" alt="${related.original_title} Poster"></a>
@@ -103,4 +120,5 @@ async function relatedMovie(id) {
   }
 }
 
+// Appel de la fonction pour afficher les informations du film
 movieInfo();

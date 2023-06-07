@@ -39,9 +39,10 @@ Class UserController{
                 $specialPwd = htmlspecialchars($password);
                 $hashedPwd = password_hash($specialPwd, PASSWORD_DEFAULT);
                 $this->user->insert($specialLogin, $hashedPwd);
-                
+                header('Location: /cinetech');
             }
         }
+        
     }
     public function ifExist($login)
     {
@@ -61,6 +62,7 @@ Class UserController{
               "id" => $result["id"],
               "login" => $result["login"]
           ];
+          header('Location: /cinetech');
           
          }
       }

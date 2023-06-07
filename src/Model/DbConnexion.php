@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-Class Dbconnexion
+Class DbConnexion
 {
     private static $servername = 'localhost';
     private static $username_b = 'root';

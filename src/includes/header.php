@@ -5,7 +5,7 @@
         <div class="link">
             <?php if(isset($_SESSION["user"])) : ?>
                 <div class="userdiv">
-                <p>Bonjour&ensp;<span class="infoName"><?= $_SESSION["user"]["login"] ?></span></p>
+                <a href="/cinetech/favorite"><p>Bonjour&ensp;<span class="infoName"><?= $_SESSION["user"]["login"] ?></span></p></a>
                 </div>
                 <a href="/cinetech/logout">Logout</a>
             <?php else : ?>

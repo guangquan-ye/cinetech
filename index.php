@@ -52,7 +52,7 @@ $router->map('POST', '/register', function(){
     if(isset($_POST["regBtn"])){
         $user = new UserController();
         $user->createUsers($_POST["regLogin"], $_POST["regPwd"], $_POST["regPwdConf"]);
-        header('Location: /cinetech');
+        
     }
 }, 'usersregister');
 
@@ -65,7 +65,7 @@ $router->map('POST', '/login', function(){
     if(isset($_POST["logBtn"])){
     $user = new UserController();
     $user->connect($_POST["logLogin"], $_POST["logPwd"]);
-    header('Location: /cinetech');
+   
     }
 }, 'userslogin');
 
@@ -76,19 +76,18 @@ $router->map('GET', '/logout', function(){
 
 $router->map('POST', '/comment', function(){
     if(isset($_POST["comment"])){
-        var_dump($_SESSION["user"]["id"]);
-        var_dump($_POST["commentId"]);
-        var_dump($_POST["commentText"]);
         $comment = new CommentController();
-        $comment->replyComment($_POST["commentId"], $_POST["commentText"], $_SESSION["user"]["id"]);
+        $comment->replyComment($_POST["type"], $_POST["type_id"], $_POST["comment_id"], $_POST["commentText"], $_SESSION["user"]["id"]);
     }
     
 }, 'comment');
 
-$router->map('GET', '/comment/[a:action]', function($action){
+$router->map('GET', '/getreplies/[a:action]', function($action){
     $comment = new CommentController();
     $comment->getReply($action);
-},'getReply');
+},'getReplies');
+
+
 
 $router->map('POST', '/favorite', function(){
     if(isset($_POST["favorite"])){
@@ -96,6 +95,24 @@ $router->map('POST', '/favorite', function(){
         $fav->addFavorite($_POST["typeName"], $_POST["typeId"], $_SESSION["user"]["id"]);
     }
 },'addFav');
+
+$router->map('GET', '/favorite', function(){
+    $fav = new FavoriteController();
+    $fav->myFavorite();
+}, 'favorite');
+
+$router->map('GET', '/myfavorite', function(){
+    $fav = new FavoriteController();
+    echo $fav->getFavorite($_SESSION["user"]["id"]);
+
+},'myFavorite'); 
+
+$router->map('POST', '/delfavorite', function(){
+    $fav = new FavoriteController();
+    echo $fav->delFavorite($_POST["type"], $_POST["id_type"]);
+
+},'delFavorite'); 
+
 // match current request url
 $match = $router->match();
 
@@ -107,7 +124,3 @@ if (is_array($match) && is_callable($match['target'])) {
     header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
 }
 ?>
-
-</body>
-
-</html>

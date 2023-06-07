@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style/style.css">
-    <title>Document</title>
+    <title>Movie</title>
 </head>
 <body>
-<?php require_once "./src/includes/header.php" ?>
+
 <main>
+<?php require_once "./src/includes/header.php" ?>
     
     <div class="movieMain">
         <h1>Movie</h1>

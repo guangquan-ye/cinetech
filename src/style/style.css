@@ -125,6 +125,7 @@ nav{
 .movieContainer, .tvshowContainer{
     display: flex;
     justify-content: center;
+    
 }
 .movieGallery, .tvshowGallery{
     width: 90%;
@@ -134,10 +135,34 @@ nav{
 	grid-template-rows: 1fr;
 	grid-column-gap: 0.8rem;
 	grid-row-gap: 1rem;
-	overflow: auto;
+	overflow-x: auto;
 	scroll-padding: 1rem;
     scroll-snap-stop: normal;
+
 }
+
+
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #8f54a0 #360429;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #360429;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #360429;
+    border-radius: 10px;
+    
+  }
+
+
 .movieGallery img, .tvshowGallery img{
     width: 100%;
     
@@ -176,6 +201,43 @@ nav{
 .leftPart img{
     height: 90%;
 }
+.addFavoriteBtnDiv{
+    display: flex;
+    justify-content: end;
+}
+
+.button-36 {
+  margin: 2% 5%;
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 4rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-36:hover {
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
+  }
+}
 .castPart{
     display: flex;
     flex-direction: row;
@@ -210,9 +272,9 @@ span.infoName{
 }
 
 .relatedDiv{
-    margin-left: auto;
-    width: 95%;
-	padding: 1rem;
+    margin: auto;
+    display: flex;
+    width: 90%;
 	display: grid;
 	grid-template-columns: repeat(6, auto);
     justify-self: center;
@@ -246,7 +308,7 @@ span.infoName{
     
 }
 /* ------------------------MOVIE DISPLAY------------------------------- */
-.movieDisplay, .tvshowDisplay{
+.movieDisplay, .tvshowDisplay, .myFavMovieDisplay, .myFavTvDisplay{
     
     margin: 5%;
     display: grid;
@@ -299,7 +361,10 @@ span.infoName{
     flex-direction: column;
     align-items: center;
     border: 1px solid white;
-    
+}
+
+.commentRightDiv p{
+    font-size: 16px;
 }
 .dateDiv{
     width: 100%;
@@ -328,10 +393,10 @@ span.infoName{
     .logoDiv img{
         width: 100%;
     }
-    .userdiv{
+    /* .userdiv{
         border: none;
         box-shadow: none;
-    }
+    } */
     .link{
         width: 100%;
         display: flex;
@@ -346,7 +411,7 @@ span.infoName{
         color: white;
     }
     .link p{
-        display: none;
+        font-size : 12px;
         
     }
     .link button{
@@ -467,7 +532,7 @@ span.infoName{
         
     }
 
-    .movieDisplay, .tvshowDisplay{
+    .movieDisplay, .tvshowDisplay, .myFavMovieDisplay, .myFavTvDisplay{
     
         margin: 5%;
         display: grid;
@@ -475,7 +540,23 @@ span.infoName{
         gap: 15px;
     }
 }
-
+.moviephpDiv{
+    display: flex;
+    position: relative;
+}
+.remove-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: red;
+    border-color: white;
+  }
+.favTitle{
+    color: white;
+    margin-left: 5%;
+    font-size: 32px;
+}
 @media screen and (max-width: 1200px) and (min-width: 700px){
 
     nav{
@@ -620,7 +701,7 @@ span.infoName{
         font-size: 17px;
         column-gap: 2%;
     }
-    .movieDisplay, .tvshowDisplay{
+    .movieDisplay, .tvshowDisplay, .myFavMovieDisplay, .myFavTvDisplay{
     
         margin: 5%;
         display: grid;
@@ -641,6 +722,7 @@ span.infoName{
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
+    z-index: 3;
   }
   
   .login-box h2 {
@@ -654,6 +736,7 @@ span.infoName{
   
   .login-box .user-box {
     position: relative;
+    z-index: 3;
   }
   
   .login-box .user-box input {

@@ -7,14 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/style/style.css">
 
-    <title>Document</title>
+    <title>Details</title>
 </head>
 
 <body>
     <?php require_once "./src/includes/header.php" ?>
     <div class="info">
-    <div class="infoDisplay" id="movieInfoDisplay"></div>
-        <button id="addFavoriteBtn" name="addFavoriteBtn">Add to favorite</button>
+        <div class="infoDisplay" id="movieInfoDisplay"></div>
+        <?php if(isset($_SESSION["user"])) : ?>
+        <div class="addFavoriteBtnDiv">
+            <button id="addFavoriteBtn" name="addFavoriteBtn" class="button-36">Add to favorite</button>
+        </div>
+        <?php endif ?>
     <div class="castPart"></div>
     
     <h1>Related Movie</h1>

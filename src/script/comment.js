@@ -3,6 +3,7 @@ const commentParts = commentUri.split("/");
 const typeId = commentParts[commentParts.length - 1];
 const typeName = commentParts[commentParts.length - 2];
 
+
 async function getComment() {
   let options = {
     method: 'GET',
@@ -20,7 +21,8 @@ async function getComment() {
     commentDisplay.innerHTML = "";
 
     for (let comment of comments.results) {
-      console.log(comment);
+      
+      
       let commentDiv = document.createElement("div");
       commentDiv.classList.add("commentDiv");
 
@@ -69,12 +71,14 @@ async function getComment() {
       commentDisplay.appendChild(commentDiv);
       commentDisplay.appendChild(commentReplyDiv);
 
-      commentBtn.addEventListener("click", function (e) {
+      commentBtn?.addEventListener("click", function (e) {
         e.preventDefault()
         displayReplyInput(commentReplyDiv, commentBtn.id);
       });
 
-      commentSubmit.addEventListener("click", function(e){
+      // getReply(typeId, commentDiv, commentBtn);
+
+      commentSubmit?.addEventListener("click", function(e){
         e.preventDefault();
         let commentForm = document.querySelector("#commentForm");
         let data = new FormData(commentForm);
@@ -89,7 +93,7 @@ async function getComment() {
         })
         .then((content) => {
           formDisplay.textContent = content;
-          console.log(content);
+          
         });
       })
       
@@ -98,7 +102,6 @@ async function getComment() {
     console.error(error);
   }
 }
-
 
 async function displayReplyInput(commentReplyDiv, commentBtn) {
   let form = document.createElement('form');
@@ -113,15 +116,15 @@ async function displayReplyInput(commentReplyDiv, commentBtn) {
   form.appendChild(input);
   form.appendChild(button);
   commentReplyDiv.appendChild(form);
-  console.log(button);
-  console.log(form);
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-
+  
     let formData = new FormData(form);
     formData.append('comment', 'ok');
-    formData.append('commentId', commentBtn);
+    formData.append("type", typeName);
+    formData.append("type_id", typeId);
+    formData.append('comment_id', commentBtn);
     formData.append("commentText", input.value);
 
     fetch('/cinetech/comment', {
@@ -130,7 +133,8 @@ async function displayReplyInput(commentReplyDiv, commentBtn) {
     })
       .then((response) => response.text())
       .then((content) => {
-        console.log(content);
+        getComment()
+        getReply(commentBtn, commentDiv);
        
       })
       .catch((error) => {
@@ -138,5 +142,22 @@ async function displayReplyInput(commentReplyDiv, commentBtn) {
       });
   });
 }
+// async function getReply(typeId, commentDiv, commentBtn) {
+  
+//   const promise = await fetch('/cinetech/getreplies/' + typeId);
+
+//   const replies = await promise.json();
+//   for (let reply of replies.results) {
+//     if (reply.type == typeName && reply.comment_id === commentBtn) {
+//       let replyContent = document.createElement("p");
+//       replyContent.textContent = reply.content;
+//       commentDisplay.appendChild(replyContent);
+//     }
+//   }
+//   console.log(replies);
+// }
+
 
 getComment();
+// getReply(typeId, commentDiv);
+

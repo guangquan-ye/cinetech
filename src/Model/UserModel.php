@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Model\Dbconnexion;
+use App\Model\DbConnexion;
 
 Class UserModel{
 
@@ -38,6 +38,5 @@ Class UserModel{
             "password" => $password,
             
         ]);
-        
-}
+    }
 }
