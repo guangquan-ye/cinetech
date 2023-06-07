@@ -178,7 +178,7 @@ async function getReplies() {
         repliesDiv.innerHTML +=`
         <div class="repliesGlobalDiv">
           <div class="commentLeftDiv">
-            <p> by : ${reply.login}</p>
+            <p> by : ${reply.user_login}</p>
           </div>
           <div class="commentRightDiv">
             <p>${reply.content}</p>

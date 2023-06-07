@@ -11,7 +11,7 @@ Class CommentController{
         $this->comment = new CommentModel();
     }
 
-    function replyComment($type, $type_id, $commentId, $commentText, $userId)
+    function replyComment($type, $type_id, $commentId, $commentText, $userLogin)
     {
 
         if(empty($commentText)){
@@ -22,10 +22,10 @@ Class CommentController{
         htmlspecialchars($type_id);
         htmlspecialchars($commentId);
         htmlspecialchars($commentText);
-        htmlspecialchars($userId);
+        htmlspecialchars($userLogin);
 
-        $this->comment->insert($type, $type_id, $commentId, $commentText, $userId);
-        
+        $this->comment->insert($type, $type_id, $commentId, $commentText, $userLogin);
+
         }
     }
 

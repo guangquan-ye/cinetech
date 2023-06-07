@@ -19,18 +19,7 @@ $router->map('GET', '/', function () {
     require_once "home.php";
 });
 
-$router->map('GET', '/login', function(){
-    $user = new UserController();
-    $user->logFormDisplay();
-});
 
-$router->map('POST', '/login', function(){
-    if(isset($_POST)){
-    $user = new UserController();
-    $user->connect($_POST["logLogin"], $_POST["logPwd"]);
-   
-    }
-});
 
 $router->map('GET', '/movie', function () {
 
@@ -69,17 +58,50 @@ $router->map('POST', '/register', function(){
     }
 });
 
+$router->map('POST', '/movie/register', function(){
+    if(isset($_POST)){
+        $user = new UserController();
+        $user->createUsers($_POST["regLogin"], $_POST["regPwd"], $_POST["regPwdConf"]);
+        
+    }
+});
 
+$router->map('POST', '/tv/register', function(){
+    if(isset($_POST)){
+        $user = new UserController();
+        $user->createUsers($_POST["regLogin"], $_POST["regPwd"], $_POST["regPwdConf"]);
+        
+    }
+});
 
+$router->map('GET', '/login', function(){
+    $user = new UserController();
+    $user->logFormDisplay();
+});
 
-
-// $router->map('POST', '/movie/login', function(){
-//     if(isset($_POST)){
-//     $user = new UserController();
-//     $user->connect($_POST["logLogin"], $_POST["logPwd"]);
+$router->map('POST', '/login', function(){
+    if(isset($_POST)){
+    $user = new UserController();
+    $user->connect($_POST["logLogin"], $_POST["logPwd"]);
    
-//     }
-// }, 'usersmovielogin');
+    }
+});
+
+$router->map('POST', '/movie/login', function(){
+    if(isset($_POST)){
+    $user = new UserController();
+    $user->connect($_POST["logLogin"], $_POST["logPwd"]);
+   
+    }
+});
+
+$router->map('POST', '/tv/login', function(){
+    if(isset($_POST)){
+    $user = new UserController();
+    $user->connect($_POST["logLogin"], $_POST["logPwd"]);
+   
+    }
+});
 
 $router->map('GET', '/logout', function(){
     $user = new UserController();
@@ -89,10 +111,14 @@ $router->map('GET', '/logout', function(){
 $router->map('POST', '/comment', function(){
     if(isset($_POST["comment"])){
         $comment = new CommentController();
-        $comment->replyComment($_POST["type"], $_POST["type_id"], $_POST["comment_id"], $_POST["commentText"], $_SESSION["user"]["id"]);
+        
+        $userLogin = isset($_SESSION["user"]["login"]) ? $_SESSION["user"]["login"] : "anonymous";
+        
+        $comment->replyComment($_POST["type"], $_POST["type_id"], $_POST["comment_id"], $_POST["commentText"], $userLogin);
     }
     
 }, 'comment');
+
 
 $router->map('GET', '/getreplies/[a:action]', function($action){
     $comment = new CommentController();
