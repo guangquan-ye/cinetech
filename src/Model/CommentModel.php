@@ -24,10 +24,15 @@ Class CommentModel{
     public function selectReply($typeId)
     {   
         
-        $select ="SELECT * FROM comment WHERE type_id = :type_id";
+        $select = "SELECT comment.*, user.login 
+           FROM comment 
+           INNER JOIN user ON comment.id_user = user.id 
+           WHERE comment.type_id = :type_id";
+
         $prepare = DbConnexion::getDb()->prepare($select);
         $prepare->execute([
-            "type_id" => $typeId
+            "type_id" => $typeId,
+            
         ]);
         $result = $prepare->fetchAll(\PDO::FETCH_ASSOC);
         return $result;

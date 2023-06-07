@@ -13,6 +13,11 @@ Class CommentController{
 
     function replyComment($type, $type_id, $commentId, $commentText, $userId)
     {
+
+        if(!empty($commentText)){
+            echo "Empty input";
+        }
+        else{
         htmlspecialchars($type);
         htmlspecialchars($type_id);
         htmlspecialchars($commentId);
@@ -20,7 +25,7 @@ Class CommentController{
         htmlspecialchars($userId);
 
         $this->comment->insert($type, $type_id, $commentId, $commentText, $userId);
-
+        }
     }
 
     function getReply($typeId){

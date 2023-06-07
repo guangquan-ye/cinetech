@@ -335,14 +335,45 @@ span.infoName{
     margin-bottom: 3%;
 
 }
+
+
+.commentReplyDiv input{
+    width: 60%;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    background: transparent;
+}
+.commentReplyDiv button{
+    background-color: #FFFFFF;
+    border: 1px solid rgb(209,213,219);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #111827;
+    font-family: 'Paytone One', sans-serif;  font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
 .commentDiv{
     font-family: 'Paytone One', sans-serif;
     color: white;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 2%;
     justify-content: center;
     
+}
+.commentGlobalDiv{
+    display: flex;
+    flex-direction: row;
 }
 .commentLeftDiv{
     justify-content: flex-start;
@@ -362,9 +393,22 @@ span.infoName{
     align-items: center;
     border: 1px solid white;
 }
-
+.repliesDiv{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    
+}
+.repliesGlobalDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding:0 10%;
+    
+}
 .commentRightDiv p{
-    font-size: 16px;
+    font-size: 14px;
 }
 .dateDiv{
     width: 100%;
@@ -510,6 +554,17 @@ span.infoName{
         display: block;
         flex-direction: column;
         
+    }
+    .repliesGlobalDiv{
+        width: 100%;
+        padding: 1% 0;
+    }
+    .commentGlobalDiv, .repliesGlobalDiv{
+        flex-direction: column;
+    }
+    .repliesDiv{
+        width: 100%;
+        margin: 0;
     }
     .commentLeftDiv img{
         display: none;
@@ -681,6 +736,10 @@ span.infoName{
     .commentDiv{
         display: flex;
         flex-direction: column;
+    }
+    .commentGlobalDiv{
+        flex-direction: column;
+        width: auto;
     }
     .commentLeftDiv img{
         display: none;
