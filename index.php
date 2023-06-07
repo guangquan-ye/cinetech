@@ -17,49 +17,12 @@ $router->setBasePath('/cinetech');
 
 $router->map('GET', '/', function () {
     require_once "home.php";
-}, 'home');
-
-$router->map('GET', '/movie', function () {
-
-    $movie = new MovieController();
-    $movie->getMovie();
-
-}, 'movie');
-
-$router->map('GET', '/tv', function(){
-
-    $tvshow = new TvshowController();
-    $tvshow->getTvshow();
-
-},'tvshow');
-
-$router->map('GET', '/movie/[i:id]', function($id){
-    $movie = new MovieController();
-    $movie->movieInfo($id);
-}, 'movieInfo');
-
-$router->map('GET', '/tv/[i:id]', function($id){
-    $tvshow = new TvshowController();
-    $tvshow->tvshowInfo($id);
-}, 'tvshowinfo');
-
-$router->map('GET', '/register', function(){
-    $user = new UserController();
-    $user->regFormDisplay();
-}, 'regFormDisplay');
-
-$router->map('POST', '/register', function(){
-    if(isset($_POST)){
-        $user = new UserController();
-        $user->createUsers($_POST["regLogin"], $_POST["regPwd"], $_POST["regPwdConf"]);
-        
-    }
-}, 'register');
+});
 
 $router->map('GET', '/login', function(){
     $user = new UserController();
     $user->logFormDisplay();
-}, 'logFormDisplay');
+});
 
 $router->map('POST', '/login', function(){
     if(isset($_POST)){
@@ -67,7 +30,56 @@ $router->map('POST', '/login', function(){
     $user->connect($_POST["logLogin"], $_POST["logPwd"]);
    
     }
-}, 'userslogin');
+});
+
+$router->map('GET', '/movie', function () {
+
+    $movie = new MovieController();
+    $movie->getMovie();
+
+});
+
+$router->map('GET', '/tv', function(){
+
+    $tvshow = new TvshowController();
+    $tvshow->getTvshow();
+
+});
+
+$router->map('GET', '/movie/[i:id]', function($id){
+    $movie = new MovieController();
+    $movie->movieInfo($id);
+});
+
+$router->map('GET', '/tv/[i:id]', function($id){
+    $tvshow = new TvshowController();
+    $tvshow->tvshowInfo($id);
+});
+
+$router->map('GET', '/register', function(){
+    $user = new UserController();
+    $user->regFormDisplay();
+});
+
+$router->map('POST', '/register', function(){
+    if(isset($_POST)){
+        $user = new UserController();
+        $user->createUsers($_POST["regLogin"], $_POST["regPwd"], $_POST["regPwdConf"]);
+        
+    }
+});
+
+
+
+
+
+// $router->map('POST', '/movie/login', function(){
+//     if(isset($_POST)){
+//     $user = new UserController();
+//     $user->connect($_POST["logLogin"], $_POST["logPwd"]);
+   
+//     }
+// }, 'usersmovielogin');
 
 $router->map('GET', '/logout', function(){
     $user = new UserController();

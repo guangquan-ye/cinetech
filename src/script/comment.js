@@ -3,6 +3,7 @@ const commentParts = commentUri.split("/");
 const typeId = commentParts[commentParts.length - 1];
 const typeName = commentParts[commentParts.length - 2];
 
+
 function createCommentElement(comment) {
   let commentDiv = document.createElement("div");
   commentDiv.classList.add("commentDiv");
@@ -46,6 +47,7 @@ function createCommentElement(comment) {
   commentBtn.classList.add("commentBtn");
   commentBtn.textContent = "Comment";
   dateDiv.appendChild(commentBtn);
+
 
   let commentReplyDiv = document.createElement("div");
   commentReplyDiv.classList.add("commentReplyDiv");

@@ -70,6 +70,7 @@ Class UserController{
               "login" => $result["login"]
           ];
           echo "Welcome";
+         
          }
         else{
             echo "Wrong login or pwd" ;

@@ -1,5 +1,5 @@
 const regDisplayBtn = document.querySelector("#regDisplayBtn");
-const logDisplayBtn = document.querySelector("#logDisplayBtn");
+const loginDisplayBtn = document.querySelector("#loginDisplayBtn");
 
 regDisplayBtn?.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -35,7 +35,7 @@ regDisplayBtn?.addEventListener("click", async (e) => {
   });
 });
 
-logDisplayBtn?.addEventListener("click", async (e) => {
+loginDisplayBtn?.addEventListener("click", async (e) => {
   e.preventDefault();
   const request = await fetch("/cinetech/login");
   const logForm = await request.text();
