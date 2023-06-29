@@ -1,7 +1,7 @@
 const uri = window.location.pathname;
 const parts = uri.split("/");
 const tvshowId = parts[parts.length - 1];
-console.log(tvshowId);
+
 async function tvshowInfo(){
 
     let options = {
@@ -15,7 +15,7 @@ async function tvshowInfo(){
       try {
         let response = await fetch("https://api.themoviedb.org/3/tv/"+tvshowId+"?append_to_response=credits", options);
         let tvshow = await response.json();
-        console.log(tvshow.credits);
+       
 
         let casting = [];
         let limit = 6;
@@ -109,7 +109,7 @@ async function relatedTvshow(id){
         let relateds = await response.json();
         let relatedTvshowDiv = document.getElementById("relatedTvshowDiv");
         let results = relateds.results.slice(0, 6);
-        console.log(results);
+        
         for (let related of results){
          
             relatedTvshowDiv.innerHTML+=`

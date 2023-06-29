@@ -8,8 +8,6 @@
     <title>Movie</title>
 </head>
 <body>
-
-<main>
 <?php require_once "./src/includes/header.php" ?>
     
     <div class="movieMain">
@@ -20,7 +18,7 @@
         <div class="paginationDiv"></div>
     </div>
     
-</main>
+
     <script src="./src/script/movie.js"></script>
     <script src="./src/script/search.js"></script>
     <script src="./src/script/auth.js"></script>

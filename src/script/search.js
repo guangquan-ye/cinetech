@@ -48,10 +48,8 @@ function search() {
     searchResults.innerHTML = '';
     if (searchValue.length > 2) {
       try {
-        // Requête à l'API TMDb pour récupérer les films et séries correspondant à la recherche
         let response = await fetch("https://api.themoviedb.org/3/search/multi?language=fr-FR&query=" + searchValue, options);
         let movies = await response.json();
-        // Affichage des résultats de recherche
         displayResults(movies.results);
       } catch (error) {
         console.error("An error occurred while retrieving movies.", error);

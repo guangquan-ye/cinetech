@@ -7,6 +7,7 @@ use App\Controller\TvshowController;
 use App\Controller\UserController;
 use App\Controller\CommentController;
 use App\Controller\FavoriteController;
+use App\Controller\AdminController;
 
 session_start();
 
@@ -150,6 +151,42 @@ $router->map('POST', '/delfavorite', function(){
     echo $fav->delFavorite($_POST["type"], $_POST["id_type"]);
 
 },'delFavorite'); 
+
+$router->map('GET', '/admin', function(){
+   require_once "src/View/admin.php";
+
+},'adminPanel');
+
+$router->map('GET', '/admin/users', function(){
+    $user = new AdminController();
+    $user->usersPanel();
+},'adminUsers');
+
+$router->map('POST', '/admin/users/login', function(){
+    if(isset($_POST)){
+        $user = new AdminController();
+     echo  $user->adminEditLogin($_POST["userId"], $_POST["login"]);
+    }
+},'adminEditLogin');
+  
+$router->map('POST', '/admin/users/password', function(){
+    if(isset($_POST)){
+        $user = new AdminController();
+     echo  $user->adminEditPassword($_POST["userId"], $_POST["password"]);
+    }
+},'adminEditPassword');
+
+$router->map('POST', '/admin/users/delete', function(){
+    if(isset($_POST)){
+        $user = new AdminController();
+     echo  $user->adminDeleteUser($_POST["userId"]);
+    }
+},'adminDeleteUser');
+
+$router->map('GET', '/admin/comments', function(){
+    $comment = new AdminController();
+    $comment->comsPanel();
+},'adminComments');
 
 // match current request url
 $match = $router->match();

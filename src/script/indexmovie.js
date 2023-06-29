@@ -43,7 +43,7 @@ slider.addEventListener('mousemove', e => {
   // Empêche le comportement par défaut du mouvement de la souris sur le slider.
   const x = e.pageX - slider.offsetLeft;
   // Calcule la position horizontale de la souris moins la position horizontale du slider.
-  const walk = (x - startX) * 1.5;
+  const walk = (x - startX) * 1.3;
   // Calcule la distance parcourue par la souris en multipliant la différence de position par 1.5.
   const maxScrollLeft = slider.scrollWidth - slider.offsetWidth;
   // Calcule la valeur maximale de défilement horizontal en soustrayant la largeur du slider de la largeur totale du contenu du slider.
@@ -80,7 +80,7 @@ async function createCarousel() {
       // Définition de la fonction 'showMovies' pour afficher les films.
       movieDisplayDiv.innerHTML = '';
       // Efface le contenu précédent de 'movieDisplayDiv'.
-      const endIndex = Math.min(index + 9, movies.results.length);
+      const endIndex = Math.min(index + 20, movies.results.length);
       // Calcule l'index de fin en prenant le minimum entre l'index actuel plus 9 et la longueur totale des films.
       for (let i = index; i < endIndex; i++) {
         // Boucle sur les films à afficher en commençant par l'index actuel et en s'arrêtant à l'index de fin.

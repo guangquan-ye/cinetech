@@ -17,6 +17,7 @@ nav{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 3;
 }
 
 .logoDiv img{
@@ -54,7 +55,123 @@ nav{
     transform: scale(1.1);
     color: #B3DEC1;
 }
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 90px;
+    border: 2px solid rgba(169, 99, 255);
+    transform: translate(-50%, -50%);
+    background-image: url("https://media.giphy.com/media/xUOwGcu6wd0cXBj5n2/giphy.gif");
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    z-index: 3;
+  }
+  
+  .login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    font-family: 'Monoton', cursive;
+    text-align: center;
 
+  }
+  .login-box p{
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Paytone One', sans-serif;
+    padding-bottom: 2%;
+  }
+  
+  .login-box .user-box {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    font-family: 'Paytone One', sans-serif;
+    
+  }
+  .login-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+    font-family: 'Paytone One', sans-serif;
+  }
+  
+  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #B3DEC1;
+    font-size: 14px;
+    
+  }
+  .buttonone{
+    border: none;
+    background: none;
+    font-size: 22px;
+    font-family: 'Paytone One', sans-serif;
+    color: white;
+  }
+  .buttonone:hover{
+    color: #B3DEC1;
+    transform: scale(1.1);
+  }
+
+
+.commentBtn, .authBtn {
+  background-color: #FFFFFF;
+  border: 1px solid rgb(209,213,219);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: 'Paytone One', sans-serif;  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+ 
+}
+
+.commentBtn:hover {
+  background-color: #B3DEC1;
+}
+
+.authBtn:hover{
+    color: white;
+    background-color: #B3DEC1;
+}
+.commentBtn:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.commentBtn:focus-visible {
+  box-shadow: none;
+}
+ 
   #searchResults{
     position: absolute;
     max-width: 300px;
@@ -131,7 +248,7 @@ nav{
     width: 90%;
 	padding: 1rem;
 	display: grid;
-	grid-template-columns: repeat(9, 30vw);
+	grid-template-columns: repeat(20, 22vw);
 	grid-template-rows: 1fr;
 	grid-column-gap: 0.8rem;
 	grid-row-gap: 1rem;
@@ -143,13 +260,13 @@ nav{
 
 
   * {
-    scrollbar-width: auto;
+    scrollbar-width: 1px;
     scrollbar-color: #8f54a0 #360429;
   }
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 1px;
+    height: 10px;
   }
 
   *::-webkit-scrollbar-track {
@@ -157,7 +274,7 @@ nav{
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #360429;
+    background-color: #8f54a0;
     border-radius: 10px;
     
   }
@@ -192,7 +309,7 @@ nav{
     
 }
 .leftPart{
-
+    
     display: flex;
     margin-left: 5%;
     justify-content: center;
@@ -200,6 +317,7 @@ nav{
 }
 .leftPart img{
     height: 90%;
+    
 }
 .addFavoriteBtnDiv{
     display: flex;
@@ -439,7 +557,21 @@ span.infoName{
     border: #ffffff solid 3px;
     margin-top: 5%;
 }
+/* -----------------------ADMIN PANEL----------------------------- */
+.panelDisplayDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    color: white;
+}
+.com{
+    display: flex;
+    flex-direction: row;
 
+    
+}
 /* -----------------------MEDIA QUERY----------------------------- */
 @media screen and (max-width: 700px){
     nav{
@@ -793,131 +925,3 @@ span.infoName{
     }
 }
 
-.login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    padding: 90px;
-    border: 2px solid rgba(169, 99, 255);
-    transform: translate(-50%, -50%);
-    background-image: url("https://media.giphy.com/media/xUOwGcu6wd0cXBj5n2/giphy.gif");
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;
-    z-index: 3;
-  }
-  
-  .login-box h2 {
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    font-family: 'Monoton', cursive;
-    text-align: center;
-
-  }
-  .login-box p{
-    color: white;
-    text-align: center;
-    font-size: 18px;
-    font-family: 'Paytone One', sans-serif;
-    padding-bottom: 2%;
-  }
-  
-  .login-box .user-box {
-    position: relative;
-    z-index: 3;
-  }
-  
-  .login-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-    font-family: 'Paytone One', sans-serif;
-    
-  }
-  .login-box .user-box label {
-    position: absolute;
-    top:0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-    font-family: 'Paytone One', sans-serif;
-  }
-  
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #B3DEC1;
-    font-size: 14px;
-    
-  }
-  .buttonone{
-    border: none;
-    background: none;
-    font-size: 22px;
-    font-family: 'Paytone One', sans-serif;
-    color: white;
-  }
-  .buttonone:hover{
-    color: #B3DEC1;
-    transform: scale(1.1);
-  }
-
-
-.commentBtn, .authBtn {
-  background-color: #FFFFFF;
-  border: 1px solid rgb(209,213,219);
-  border-radius: .5rem;
-  box-sizing: border-box;
-  color: #111827;
-  font-family: 'Paytone One', sans-serif;  font-size: .875rem;
-  font-weight: 600;
-  line-height: 1.25rem;
-  padding: .75rem 1rem;
-  text-align: center;
-  text-decoration: none #D1D5DB solid;
-  text-decoration-thickness: auto;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  cursor: pointer;
- 
-}
-
-.commentBtn:hover {
-  background-color: #B3DEC1;
-}
-
-.authBtn:hover{
-    color: white;
-    background-color: #B3DEC1;
-}
-.commentBtn:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.commentBtn:focus-visible {
-  box-shadow: none;
-}
- 
-  
- 
-  
-  
-  
- 
-  
-  
- 
-  
- 

@@ -72,7 +72,6 @@ function arrayToString(array) {
 
 function updateGenresString() {
   const genresString = arrayToString(genreArray);
-  console.log(currentPage);
   getTVShowByGenre(genresString, currentPage, tvshowsPerPage);
 }
 
@@ -86,7 +85,6 @@ function uncheck(value) {
 
 async function getTVShowByGenre(genresString, page, perPage) {
   const byGenre = genresString;
-  console.log(genresString);
   let options = {
     method: 'GET',
     headers: {

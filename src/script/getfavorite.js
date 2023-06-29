@@ -5,8 +5,6 @@ async function getFav() {
   let request = await fetch("/cinetech/myfavorite");
   let favorites = await request.json();
 
-  console.log(favorites);
-
   for (let favorite of favorites) {
 
     let options = {
@@ -84,7 +82,6 @@ async function getFav() {
         removeButton.id = favorite.type;
         removeButton.value = favorite.id_type;
         removeButton.textContent = 'X';
-        console.log(removeButton);
 
         removeButton.addEventListener('click', async () => {
           let data = new FormData();

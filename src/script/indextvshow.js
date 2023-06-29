@@ -22,7 +22,7 @@ tvSlider.addEventListener('mousemove', e => {
   if (!tvIsDown) return;
   e.preventDefault();
   const tvX = e.pageX - tvSlider.offsetLeft;
-  const tvWalk = (tvX - tvStartX) * 1.5;
+  const tvWalk = (tvX - tvStartX) * 1.3;
   const tvMaxScrollLeft = tvSlider.scrollWidth - tvSlider.offsetWidth;
   const tvNewScrollLeft = tvScrollLeft - tvWalk;
   tvSlider.scrollLeft = Math.max(0, Math.min(tvMaxScrollLeft, tvNewScrollLeft)); 
@@ -47,7 +47,7 @@ async function createCarousel() {
 
     function showTvShows(index) {
       tvshowDisplayDiv.innerHTML = '';
-      const endIndex = Math.min(index + 9, tvshows.results.length);
+      const endIndex = Math.min(index + 20, tvshows.results.length);
       for (let i = index; i < endIndex; i++) {
         const tvshow = tvshows.results[i];
         if (tvshow) {

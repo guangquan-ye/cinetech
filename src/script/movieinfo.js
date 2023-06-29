@@ -22,7 +22,7 @@ async function movieInfo() {
     // Requête à l'API TMDb pour récupérer les informations du film, y compris les crédits
     let response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?append_to_response=credits`, options);
     let movie = await response.json();
-
+    console.log(movie);
     let casting = [];
     let limit = 6;
     let count = 0;
