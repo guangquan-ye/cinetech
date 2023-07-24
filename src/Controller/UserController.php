@@ -41,8 +41,7 @@ Class UserController{
                 $this->user->insert($specialLogin, $hashedPwd);
 
                 echo "Succesfully Submit";
-            } 
-                
+            }   
             
         }
         else{

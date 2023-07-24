@@ -13,14 +13,11 @@ session_start();
 
 $router = new AltoRouter();
 
-// (Il faut redémarrer vscode si il ne reconnait pas AltoRouter)
 $router->setBasePath('/cinetech');
 
 $router->map('GET', '/', function () {
     require_once "home.php";
 });
-
-
 
 $router->map('GET', '/movie', function () {
 

@@ -35,8 +35,7 @@ Class UserModel{
         $prepare = DbConnexion::getDb()->prepare($insert);
         $prepare->execute([
             "login" => $login,
-            "password" => $password,
-            
+            "password" => $password,  
         ]);
     }
 }

@@ -1,4 +1,4 @@
-let currentPage = 1;
+const currentPage = 1;
 const tvshowsPerPage = 20;
 
 async function getGenres() {
@@ -96,7 +96,6 @@ async function getTVShowByGenre(genresString, page, perPage) {
   try {
     let response = await fetch("https://api.themoviedb.org/3/discover/tv?with_genres=" + byGenre + "&page=" + page + "&per_page=" + perPage, options);
     let data = await response.json();
-    console.log(data);
     let tvshowDisplay = document.querySelector("#tvshowDisplay");
     tvshowDisplay.innerHTML = '';
 
